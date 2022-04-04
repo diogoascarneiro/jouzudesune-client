@@ -1,22 +1,5 @@
-//   cardNumber: {
-//     type: Number,
-//     unique: true
-// },
-// questionWord: String,
-// wordWithFurigana: String,
-// wordInKana: String,
-// wordMeanings: String,
-// wordAudio: String,
-// exampleSentence: String,
-// exampleWithFurigana: String,
-// exampleInKana: String,
-// exampleTranslation: String,
-// exampleClozed: String,
-// exampleAudio: String,
-// difficulty: String
-
 import React from 'react';
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useEffect } from 'react';
 import { getCard } from '../../api';
 
 export const CardBack = () => {

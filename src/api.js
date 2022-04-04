@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const baseURL = `${process.env.REACT_APP_JOUZUDESUNE_API}/api`;
-debugger;
 /* Users */
 
 export const getAllUsers = () => {
