@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getDeck } from "../../api";
 import { CardFront } from "../../components/cards/CardFront";
-import { CardBack } from "../../components/cards/CardBack";
+import { Loading } from "../../components/global/Loading";
 
 export const Deck = () => {
     const [deck, setDeck] = useState();
@@ -16,7 +16,7 @@ export const Deck = () => {
       })()
     }, []);
 
-    if (!deck) return <p>Loading...</p>
+    if (!deck) return <Loading/>
   return (
     <div>
         <p>{deck.name}</p>
