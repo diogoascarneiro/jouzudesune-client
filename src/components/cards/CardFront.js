@@ -1,22 +1,27 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { getCard } from "../../api";
-export const CardFront = () => {
- 
-  const [card, setCard] = useState({});
+import { CardBack } from "./CardBack";
+import { Loading } from "../global/Loading";
 
- useEffect(() => {
-  ( async () => {
-    const response = await getCard("624851d578c8ecd2aa72f2a8");
-    setCard(response.data);
-})()
- }, []);
+export const CardFront = ({ id }) => {
+  const [card, setCard] = useState();
+  const [cardState, setCardState] = useState("front");
 
-  return (
-    <div>
-    <h1>{card.questionWord}</h1>
-    <button>Option 1</button>
-    <button>Option 2</button>
-    <button>Option 3</button>
+  useEffect(() => {
+    (async () => {
+      const response = await getCard(id);
+      setCard(response.data);
+    })();
+  }, []);
+
+  if (!card) return <Loading />;
+
+  return cardState === "front" ? (
+    <div className="border-2">
+      <h1>{card.questionWord}</h1>
+      <button onClick={() => setCardState("back")}>Show card back</button>
     </div>
-  )
-}
+  ) : (
+    <CardBack id={id} />
+  );
+};

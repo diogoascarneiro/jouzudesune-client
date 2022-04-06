@@ -2,13 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getCard } from '../../api';
 
-export const CardBack = () => {
+export const CardBack = ({id}) => {
 
   const [card, setCard] = useState({});
 
   useEffect(() => {
    ( async () => {
-     const response = await getCard("624851d578c8ecd2aa72f2a8");
+     const response = await getCard(id);
      setCard(response.data);
  })()
   }, []);
