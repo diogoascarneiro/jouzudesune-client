@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import { Navbar } from "./components/global/Navbar.js";
 import { Deck } from './pages/decks/Deck';
 import { DeckList } from './pages/decks/DeckList';
