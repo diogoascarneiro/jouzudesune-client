@@ -23,6 +23,14 @@ export const updateUser = (updatedUser) => {
     return axios.put(`${baseURL}/users/${updatedUser._id}`, updatedUser)
 }
 
+// export const uploadProfilePic = (userId, profilePic) => {
+//     return axios.post(`${baseURL}/users/${userId}`, profilePic)
+// }
+
+export const upload = (uploadData) => {
+    return axios.post(`${baseURL}/upload`, uploadData)
+}
+
 /* Auth */
 
 export const signup = (user) => {
@@ -82,3 +90,4 @@ export const addDeck = (deck) => {
 export const updateDeck = (updatedDeck) => {
     return axios.put(`${baseURL}/decks/${updatedDeck._id}`, updatedDeck)
 }
+

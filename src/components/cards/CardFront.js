@@ -19,7 +19,7 @@ export const CardFront = ({ id }) => {
   return cardState === "front" ? (
     <div className="border-2">
       <h1>{card.questionWord}</h1>
-      <button onClick={() => setCardState("back")}>Show card back</button>
+      <button className="btn" onClick={() => setCardState("back")}>Show card back</button>
     </div>
   ) : (
     <CardBack id={id} />

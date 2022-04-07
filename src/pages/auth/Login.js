@@ -31,14 +31,14 @@ export const Login = () => {
   return (
     <div>
         <h1>Login</h1>
-        <form onSubmit={handleSubmitForm}>
+        <form className="flex flex-col" onSubmit={handleSubmitForm}>
             <label>Username</label>
             <input type="text" value={username} onChange={(e)=> setUsername(e.target.value)}/>
             <label>Password</label>
             <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
             <button type="submit">Login</button>
         </form>
-        <p>Don't have an account? </p>
+        <p>Don't have an account?</p>
         <Link to={"/signup"}>Sign up</Link>
     </div>
   )
