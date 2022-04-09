@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { getCard } from "../../api";
-import { CardBack } from "./CardBack";
 import { Loading } from "../global/Loading";
 
-export const CardFront = ({ id }) => {
+export const CardFront = ({ id, showCardBack, cardQuestions }) => {
   const [card, setCard] = useState();
-  const [cardState, setCardState] = useState("front");
 
   useEffect(() => {
     (async () => {
@@ -14,14 +12,14 @@ export const CardFront = ({ id }) => {
     })();
   }, []);
 
-  if (!card) return <Loading />;
-
-  return cardState === "front" ? (
+  if (!card || !cardQuestions?.meanings?.length) return <Loading />;
+  return (
+   
     <div className="border-2">
       <h1>{card.questionWord}</h1>
-      <button className="btn" onClick={() => setCardState("back")}>Show card back</button>
+      <button className="btn" onClick={showCardBack}>{cardQuestions.meanings[0]}</button>
+      <button className="btn" onClick={showCardBack}>{cardQuestions.meanings[1]}</button>
+      <button className="btn" onClick={showCardBack}>{cardQuestions.meanings[2]}</button>
     </div>
-  ) : (
-    <CardBack id={id} />
-  );
+  )
 };

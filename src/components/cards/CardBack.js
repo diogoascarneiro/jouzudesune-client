@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getCard } from '../../api';
 
-export const CardBack = ({id}) => {
+export const CardBack = ({id, moveToNextCard}) => {
 
   //testing html parsing from string to avoid changing the db
  // const htmlParser = new DOMParser();
@@ -29,7 +29,7 @@ export const CardBack = ({id}) => {
     <p>{card.exampleInKana}</p>
     <p>{card.exampleTranslation}</p>
     <p>{card.exampleAudio}</p>
-    <button className="btn">Next card</button>
+    <button className="btn" onClick={moveToNextCard}>Next card</button>
     </div>
   )
 }
