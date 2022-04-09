@@ -81,8 +81,8 @@ export const Signup = () => {
 
           <button className="btn" type="submit">Sign up</button>
         </form>
-        <p>Already have an account? </p>
-        <Link to={"/login"}>Log In</Link>
+        <p className="py-5">Already have an account? </p>
+        <Link className="btn w-full" to={"/login"}>Log In</Link>
       </div>
     </div>
   );

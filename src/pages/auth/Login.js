@@ -28,18 +28,35 @@ export const Login = () => {
        }
     }
 
+    // NOTE: CHANGE USERNAME TO EMAIL FOR LOGIN VERIFICATION. JUST PERSONAL PREFERENCE
   return (
-    <div>
+    <div className="flex justify-center">
+    <div className="w-1/3">
         <h1>Login</h1>
         <form className="flex flex-col" onSubmit={handleSubmitForm}>
-            <label>Username</label>
-            <input type="text" value={username} onChange={(e)=> setUsername(e.target.value)}/>
-            <label>Password</label>
-            <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
-            <button type="submit">Login</button>
+            <div className="form-control">
+  <label className="label">
+    <span className="label-text">Your user name</span>
+  </label> 
+  <label className="input-group">
+    <span className="text-sm w-1/4">User name</span>
+    <input type="text" placeholder="User name" className="input input-bordered w-3/4" onChange={(e) => setUsername(e.target.value)}/>
+  </label>
+</div> 
+            <div className="form-control">
+  <label className="label">
+    <span className="label-text">Your password</span>
+  </label>
+  <label className="input-group">
+    <span className="text-sm w-1/4">Password</span>
+    <input type="password" placeholder="**********" className="input input-bordered w-3/4" onChange={(e) => setPassword(e.target.value)} />
+  </label>
+</div>
+            <button className="btn" type="submit">Login</button>
         </form>
         <p>Don't have an account?</p>
-        <Link to={"/signup"}>Sign up</Link>
+        <Link className="btn w-full" to={"/signup"}>Sign up</Link>
+    </div>
     </div>
   )
 }

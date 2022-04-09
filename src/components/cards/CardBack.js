@@ -4,6 +4,9 @@ import { getCard } from '../../api';
 
 export const CardBack = ({id}) => {
 
+  //testing html parsing from string to avoid changing the db
+ // const htmlParser = new DOMParser();
+
   const [card, setCard] = useState({});
 
   useEffect(() => {
@@ -20,11 +23,13 @@ export const CardBack = ({id}) => {
     <p>{card.wordInKana}</p>
     <p>{card.wordMeanings}</p>
     <p>{card.wordAudio}</p>
+    {/* <p>{htmlParser.parseFromString(card.exampleSentence, "text/html")}</p> */}
     <p>{card.exampleSentence}</p>
     <p>{card.exampleWithFurigana}</p>
     <p>{card.exampleInKana}</p>
     <p>{card.exampleTranslation}</p>
     <p>{card.exampleAudio}</p>
+    <button className="btn">Next card</button>
     </div>
   )
 }
