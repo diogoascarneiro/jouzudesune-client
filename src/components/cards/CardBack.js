@@ -17,7 +17,7 @@ export const CardBack = ({id}) => {
   }, []);
 
   return (
-    <div>
+    <div className="">
     <h1>{card.questionWord}</h1>
     <p>{card.wordWithFurigana}</p>
     <p>{card.wordInKana}</p>
