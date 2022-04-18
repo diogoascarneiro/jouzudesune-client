@@ -24,12 +24,15 @@ export const CardFront = ({ id, showCardBack, cardQuestions }) => {
 
   if (!card || !cardQuestions?.meanings?.length) return <Loading />;
   return (
-   
-    <div className="">
-      <h1 className="text-center mt-16 mb-32">{card.questionWord}</h1>
-      <button className="btn" onClick={(e) => handleAnswer(e)}>{cardQuestions.meanings[0]}</button>
-      <button className="btn" onClick={(e) => handleAnswer(e)}>{cardQuestions.meanings[1]}</button>
-      <button className="btn" onClick={(e) => handleAnswer(e)}>{cardQuestions.meanings[2]}</button>
+    <div className="card w-96 bg-neutral shadow-xl">
+    <div className="card-body items-center text-center">
+    <h1 className="text-center mt-16 mb-32">{card.questionWord}</h1>
+      <div className="card-actions justify-center">
+        <button className="btn btn-primary" onClick={(e) => handleAnswer(e)}>{cardQuestions.meanings[0]}</button>
+      <button className="btn btn-primary" onClick={(e) => handleAnswer(e)}>{cardQuestions.meanings[1]}</button>
+      <button className="btn btn-primary" onClick={(e) => handleAnswer(e)}>{cardQuestions.meanings[2]}</button>
+      </div>
     </div>
+  </div>
   )
 };

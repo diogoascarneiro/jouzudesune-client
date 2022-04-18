@@ -16,7 +16,15 @@ export const DeckList = () => {
     <div>
     <h1>Decks</h1>
     {deckList.map((deck) => {
-      return <Link to={deck._id}><p>{deck.name}</p></Link>
+      return <><Link to={deck._id}>
+      <div className="card w-40 h-60 m-8 bg-neutral shadow-xl">
+   <div className="card-body items-center text-center justify-between">
+    <h2 className="card-title">{deck.name}</h2>
+    <p className="grow-0">Perfect for testing!</p>
+  </div>
+</div>
+      </Link></>
+    
     })}
     </div>
   )

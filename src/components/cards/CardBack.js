@@ -16,12 +16,12 @@ export const CardBack = ({ id, moveToNextCard }) => {
   }, []);
 
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl">
-      <div className="flex justify-center lg:items-center p-20">
+    <div className="card lg:card-side bg-neutral shadow-xl">
+      <div className="flex justify-center lg:items-center px-20">
         <h1 className="text-center">{card.questionWord}</h1>
       </div>
       <div className="card-body">
-        <h2 className="card-title">That's right!</h2>
+        <h1 className="card-title">That's right!</h1>
         <p>
           <b>Word with furigana: </b>
           {card.wordWithFurigana}
