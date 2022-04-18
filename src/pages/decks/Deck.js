@@ -6,6 +6,7 @@ import { CardBack } from "../../components/cards/CardBack";
 import { Loading } from "../../components/global/Loading";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { DeckComplete } from "../../components/cards/DeckComplete";
 
 export const Deck = () => {
     const [deck, setDeck] = useState();
@@ -26,14 +27,9 @@ export const Deck = () => {
     }
 
     const moveToNextCard = () => {
-       if (currentCard +1 >= deck.cards.length) {
-        navigate("/decks");
-        toast.success("ya fookin' did it");
-      } else {
         setCurrentCard(currentCard + 1);
         setCardState("front");
-        generateQuestions(currentCard + 1, deck)
-      }
+        generateQuestions(currentCard + 1, deck) 
     }
 
     const showCardBack = () => {
@@ -49,6 +45,9 @@ export const Deck = () => {
     }, []);
 
     if (!deck) return <Loading/>
+
+    if (currentCard >= deck.cards.length) return <DeckComplete/>
+
   return (
     <div>
         <h3 className="">{deck.name}</h3>

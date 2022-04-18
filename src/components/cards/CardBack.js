@@ -15,23 +15,21 @@ export const CardBack = ({ id, moveToNextCard }) => {
     })();
   }, []);
 
+  const congratulateCard = () => {
+    let congratulations =  ["That's right!", "You got it!", "You know your stuff!", "Yep, that's it!"];
+    return congratulations[Math.floor(Math.random()*congratulations.length)];
+  }
+
   return (
     <div className="card lg:card-side bg-neutral shadow-xl">
       <div className="flex justify-center lg:items-center px-20">
-        <h1 className="text-center">{card.questionWord}</h1>
+        <h1 className="text-center"> <ruby><rb>{card.questionWord}</rb><rt style={{fontSize: "1rem"}}>{card.wordInKana}</rt>
+          </ruby></h1>
       </div>
       <div className="card-body">
-        <h1 className="card-title">That's right!</h1>
+        <h1 className="card-title pb-5">{congratulateCard()}</h1>
         <p>
-          <b>Word with furigana: </b>
-          {card.wordWithFurigana}
-        </p>
-        <p>
-          <b>Word in kana: </b>
-          {card.wordInKana}
-        </p>
-        <p>
-          <b>Meanings: </b>
+          <b>Word meanings: </b>
           {card.wordMeanings}
         </p>
         <p>
