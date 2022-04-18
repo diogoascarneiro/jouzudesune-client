@@ -16,12 +16,13 @@ export const Deck = () => {
     const {deckId} = useParams();
     const navigate = useNavigate();
 
+    // create an array of three possible answers for each card - two false, one correct
     const generateQuestions = (currentCard, deck) => {
-        const rightMeaning = deck.cards[currentCard].wordMeanings;
+        const correctMeaning = deck.cards[currentCard].wordMeanings;
         const possibleMeanings = deck.cards.filter((card) => card._id !==  deck.cards[currentCard]._id).map((card) => card.wordMeanings).slice(0, 2);
-        possibleMeanings.push(rightMeaning);
+        possibleMeanings.push(correctMeaning);
         const shuffled = [...possibleMeanings].sort(() => 0.5 - Math.random());    
-        setCardQuestions({meanings: shuffled});
+        setCardQuestions({meanings: shuffled, correctMeaning});
     }
 
     const moveToNextCard = () => {
@@ -51,9 +52,11 @@ export const Deck = () => {
   return (
     <div>
         <h3 className="">{deck.name}</h3>
+        <div className="grid place-items-center">
         {cardState === "front" ? 
         <CardFront id={deck.cards[currentCard]._id} showCardBack={showCardBack} cardQuestions={cardQuestions}/> :
         <CardBack id={deck.cards[currentCard]._id} moveToNextCard={moveToNextCard} />}
+        </div>
     </div>
   )
 }
