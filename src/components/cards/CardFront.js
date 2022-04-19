@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import { getCard } from "../../api";
 import { Loading } from "../global/Loading";
 
-export const CardFront = ({ id, showCardBack, cardQuestions }) => {
+export const CardFront = ({ id, showCardBack, trackScore, cardQuestions }) => {
   const [card, setCard] = useState();
+  const [cardScore, setCardScore] = useState(2);
 
   const handleAnswer = (e) => {
     if (e.target.innerText.toLowerCase() != cardQuestions.correctMeaning) {
       e.target.style.visibility = "hidden";
+      setCardScore(cardScore - 1);
     }
     if (e.target.innerText.toLowerCase() === cardQuestions.correctMeaning) {
       showCardBack();
+      trackScore(cardScore);
     }
     
   }
