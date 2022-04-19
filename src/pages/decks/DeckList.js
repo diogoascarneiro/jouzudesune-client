@@ -16,7 +16,7 @@ export const DeckList = () => {
     <><h1>Decks</h1>
     <div className="flex flex-row">
     {deckList.map((deck) => {
-      return <Link to={deck._id} className="card w-40 h-60 m-8 bg-neutral shadow-xl">
+      return <Link to={deck._id} key={deck._id} className="card w-40 h-60 m-8 bg-neutral shadow-xl">
    <div className="card-body items-center text-center justify-between">
     <h2 className="card-title">{deck.name}</h2>
     <p className="grow-0">Perfect for testing!</p>

@@ -23,12 +23,19 @@ export const updateUser = (updatedUser) => {
     return axios.put(`${baseURL}/users/${updatedUser._id}`, updatedUser)
 }
 
-// export const uploadProfilePic = (userId, profilePic) => {
-//     return axios.post(`${baseURL}/users/${userId}`, profilePic)
-// }
-
+// Function below is mainly used for profile pics but could be useful for something else in the future
 export const upload = (uploadData) => {
     return axios.post(`${baseURL}/upload`, uploadData)
+}
+
+// User -> Deck and User -> Card data update functions
+
+export const updateUserDeckData = (user, deckData) => {
+    return axios.put(`${baseURL}/users/${user._id}/updateDeckData`, deckData)
+}
+
+export const updateUserCardData = (user, cardData) => {
+    return axios.put(`${baseURL}/users/${user._id}/updateDeckData`, cardData)
 }
 
 /* Auth */
@@ -57,6 +64,7 @@ export const getCard = (id) => {
     return axios.get(`${baseURL}/cards/${id}`);
 }
 
+/*
 export const deleteCard = (id) => {
     return axios.delete(`${baseURL}/cards/${id}`);
 }
@@ -68,6 +76,7 @@ export const addCard = (card) => {
 export const updateCard = (updatedCard) => {
     return axios.put(`${baseURL}/cards/${updatedCard._id}`, updatedCard)
 }
+*/
 
 /* Decks */
 

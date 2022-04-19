@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css"
 function App() {
   return (
     <div className="App">
-    <ToastContainer/>
+    <ToastContainer position="bottom-right" closeOnClick/>
       <Navbar/>
       <Routes>
       <Route path="/" element={<Homepage></Homepage>} />

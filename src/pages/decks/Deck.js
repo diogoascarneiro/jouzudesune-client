@@ -33,9 +33,12 @@ export const Deck = () => {
     }
 
     const moveToNextCard = () => {
+      if (!(currentCard +1 >= deck.cards.length)) {
         setCurrentCard(currentCard + 1);
         setCardState("front");
         generateQuestions(currentCard + 1, deck) 
+      } else {setCurrentCard(currentCard + 1);}
+      
     }
 
     const showCardBack = () => {
