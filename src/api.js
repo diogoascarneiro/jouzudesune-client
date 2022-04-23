@@ -31,12 +31,23 @@ export const upload = (uploadData) => {
 // User -> Deck and User -> Card data update functions
 
 export const getUserDeckData = (user, deckId) => {
-    debugger
     return axios.get(`${baseURL}/users/${user._id}/decks/${deckId}`)
 }
 
 export const updateUserDeckData = (user, deckId, deck) => {
     return axios.put(`${baseURL}/users/${user._id}/decks/${deckId}`, deck)
+}
+
+export const getUserCardData = (user, cardId) => {
+    return axios.get(`${baseURL}/users/${user._id}/cards/${cardId}`)
+}
+
+export const updateUserCardData = (user, cardId, card) => {
+    return axios.put(`${baseURL}/users/${user._id}/cards/${cardId}`, card)
+}
+
+export const updateAllDeckCards = (user, cards) => {
+    return axios.put(`${baseURL}/users/${user._id}/cards/`, cards)
 }
 
 /* Auth */

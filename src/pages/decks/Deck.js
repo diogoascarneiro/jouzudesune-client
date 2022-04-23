@@ -7,12 +7,19 @@ import { Loading } from "../../components/global/Loading";
 //import { useNavigate } from "react-router-dom";
 import { DeckComplete } from "../../components/cards/DeckComplete";
 
+/* Note to self: need to considering doing card updates in a single call to the database
+   at the end of each deck rather than card by card.
+
+   Note to self 2: turn all these states into a reducer
+*/
+
 export const Deck = () => {
     const [deck, setDeck] = useState();
     const [currentCard, setCurrentCard] = useState(0);
     const [cardState, setCardState] = useState("front");
     const [cardQuestions, setCardQuestions] = useState({});
-    const [score, setScore] = useState(0);
+    const [totalScore, setTotalScore] = useState(0);
+    const [cardScores, setCardScores] = useState([]);
 
     const {deckId} = useParams();
 //    const navigate = useNavigate();
@@ -44,9 +51,11 @@ export const Deck = () => {
       setCardState("back")
     }
 
-    const trackScore = (cardScore) => {
+    const trackScore = (score, cardId) => {
       // each card can give you two points, one point is deducted each time you guess incorrectly
-      setScore(score + cardScore);
+      const cardScoreObject = {cardId, score};
+      setCardScores([...cardScores, cardScoreObject]);
+      setTotalScore(totalScore + score);
     }
 
     useEffect(() => {
@@ -59,7 +68,7 @@ export const Deck = () => {
 
     if (!deck) return <Loading/>
 
-    if (currentCard >= deck.cards.length) return <DeckComplete score={score}/>
+    if (currentCard >= deck.cards.length) return <DeckComplete totalScore={totalScore} cardScores={cardScores}/>
 
   return (
     <div>
@@ -67,7 +76,7 @@ export const Deck = () => {
         <div className="grid place-items-center">
         {cardState === "front" ? 
         <CardFront id={deck.cards[currentCard]._id} showCardBack={showCardBack} cardQuestions={cardQuestions} trackScore={trackScore}/> :
-        <CardBack id={deck.cards[currentCard]._id} moveToNextCard={moveToNextCard} score={score}/>}
+        <CardBack id={deck.cards[currentCard]._id} moveToNextCard={moveToNextCard}/>}
         </div>
     </div>
   )
