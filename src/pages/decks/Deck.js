@@ -7,10 +7,8 @@ import { Loading } from "../../components/global/Loading";
 //import { useNavigate } from "react-router-dom";
 import { DeckComplete } from "../../components/cards/DeckComplete";
 
-/* Note to self: need to considering doing card updates in a single call to the database
-   at the end of each deck rather than card by card.
-
-   Note to self 2: turn all these states into a reducer
+/* 
+ Note to self 2: turn all these states into a reducer
 */
 
 export const Deck = () => {

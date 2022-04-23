@@ -33,7 +33,10 @@ export const NavUserMenu = () => {
             <NavLink to="/user/settings">Settings</NavLink>
           </li>
           <li>
-            <NavLink to="#" onClick={logoutUser}>
+            <NavLink to="/user/dashboard">Dashboard</NavLink>
+          </li>
+          <li>
+            <NavLink to="/user/logout" onClick={logoutUser}>
               Logout
             </NavLink>
           </li>
