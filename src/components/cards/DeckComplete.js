@@ -24,22 +24,7 @@ export const DeckComplete = ({ totalScore, cardScores }) => {
   }
 
   const cardUpdater = async () => {
-
     await updateAllDeckCards(user, cardScores);
-
-    // const currentDeck = await getUserDeckData(user, deckId);
-    // const deckData = { deckId: deckId };
-    // if (!currentDeck.data) {
-    //   deckData.timesPlayed = 1;
-    //   deckData.highScore = score;
-    //   await updateUserDeckData(user, deckId, deckData);
-    // } else {
-    //   deckData.timesPlayed = currentDeck.data.timesPlayed + 1;
-    //   currentDeck.data.highScore > score
-    //     ? (deckData.highScore = currentDeck.data.highScore)
-    //     : (deckData.highScore = score);
-    //   await updateUserDeckData(user, deckId, deckData);
-    // }
   }
 
   useEffect(() => {
