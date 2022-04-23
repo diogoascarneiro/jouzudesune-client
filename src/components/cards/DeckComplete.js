@@ -1,21 +1,25 @@
 import { Link, useParams } from "react-router-dom"
 import { UserContext } from "../../context/user.context";
 import { useContext, useEffect } from "react";
-import { updateUserDeckData } from "../../api";
+import { getUserDeckData, updateUserDeckData } from "../../api";
 
 export const DeckComplete = ({score}) => {
   const { user } = useContext(UserContext);
-  const {deckId} = useParams();
+  const { deckId } = useParams();
 
   useEffect(() => {
     (async () => {
-      await updateUserDeckData(user, { $push: 
-        {decks: {
-          id: deckId,
-          timesPlayed: 1,
-          highScore: 420
-        }}
-      });
+     const currentDeck = await getUserDeckData(user, deckId);
+     const deckData = {deckId: deckId}; 
+     if (!currentDeck) {
+        deckData.timesPlayed = 1;
+        deckData.highScore = score;
+        await updateUserDeckData(user, deckId, deckData);
+      } else {
+        deckData.timesPlayed = currentDeck.data.timesPlayed + 1;        
+        currentDeck.data.highScore > score ? deckData.highScore = currentDeck.data.highScore : deckData.highScore = score;
+        await updateUserDeckData(user, deckId, deckData);
+      }
     })();
   }, []);
 

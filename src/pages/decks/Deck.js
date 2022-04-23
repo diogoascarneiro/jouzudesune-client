@@ -4,8 +4,7 @@ import { getDeck } from "../../api";
 import { CardFront } from "../../components/cards/CardFront";
 import { CardBack } from "../../components/cards/CardBack";
 import { Loading } from "../../components/global/Loading";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+//import { useNavigate } from "react-router-dom";
 import { DeckComplete } from "../../components/cards/DeckComplete";
 
 export const Deck = () => {
@@ -16,7 +15,7 @@ export const Deck = () => {
     const [score, setScore] = useState(0);
 
     const {deckId} = useParams();
-    const navigate = useNavigate();
+//    const navigate = useNavigate();
 
     // create an array of three possible answers for each card - two false, one correct
     const generateQuestions = (currentCard, deck) => {

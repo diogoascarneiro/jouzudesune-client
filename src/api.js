@@ -30,12 +30,13 @@ export const upload = (uploadData) => {
 
 // User -> Deck and User -> Card data update functions
 
-export const updateUserDeckData = (user, deckData) => {
-    return axios.put(`${baseURL}/users/${user._id}/updateDeckData`, deckData)
+export const getUserDeckData = (user, deckId) => {
+    debugger
+    return axios.get(`${baseURL}/users/${user._id}/decks/${deckId}`)
 }
 
-export const updateUserCardData = (user, cardData) => {
-    return axios.put(`${baseURL}/users/${user._id}/updateDeckData`, cardData)
+export const updateUserDeckData = (user, deckId, deck) => {
+    return axios.put(`${baseURL}/users/${user._id}/decks/${deckId}`, deck)
 }
 
 /* Auth */
