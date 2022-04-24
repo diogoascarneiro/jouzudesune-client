@@ -5,6 +5,6 @@ export const AudioButton = ({src}) => {
     }
 
   return (
-      <><button onClick={play} className="btn btn-primary">Play</button></>
+      <><button onClick={play} className="btn btn-primary">🕪 Play</button></>
   )
 }
