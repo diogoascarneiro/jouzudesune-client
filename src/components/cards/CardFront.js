@@ -7,15 +7,21 @@ export const CardFront = ({ id, showCardBack, trackScore, cardQuestions }) => {
   const [cardScore, setCardScore] = useState(2);
 
   const handleAnswer = (e) => {
-    if (e.target.innerText.toLowerCase() !== cardQuestions.correctMeaning.toLowerCase()) {
+    if (
+      e.target.innerText.toLowerCase() !==
+      cardQuestions.correctMeaning.toLowerCase()
+    ) {
       e.target.style.visibility = "hidden";
       setCardScore(cardScore - 1);
     }
-    if (e.target.innerText.toLowerCase() === cardQuestions.correctMeaning.toLowerCase()) {
+    if (
+      e.target.innerText.toLowerCase() ===
+      cardQuestions.correctMeaning.toLowerCase()
+    ) {
       showCardBack();
       trackScore(cardScore, id);
     }
-  }
+  };
 
   useEffect(() => {
     (async () => {
@@ -27,14 +33,20 @@ export const CardFront = ({ id, showCardBack, trackScore, cardQuestions }) => {
   if (!card || !cardQuestions?.meanings?.length) return <Loading />;
   return (
     <div className="card w-96 bg-neutral shadow-xl">
-    <div className="card-body items-center text-center">
-    <h1 className="text-center mt-16 mb-32">{card.questionWord}</h1>
-      <div className="card-actions justify-center">
-        <button className="btn btn-primary" onClick={(e) => handleAnswer(e)}>{cardQuestions.meanings[0]}</button>
-      <button className="btn btn-primary" onClick={(e) => handleAnswer(e)}>{cardQuestions.meanings[1]}</button>
-      <button className="btn btn-primary" onClick={(e) => handleAnswer(e)}>{cardQuestions.meanings[2]}</button>
+      <div className="card-body items-center text-center">
+        <h1 className="text-center mt-16 mb-32">{card.questionWord}</h1>
+        <div className="card-actions justify-center">
+          <button className="btn btn-primary" onClick={(e) => handleAnswer(e)}>
+            {cardQuestions.meanings[0]}
+          </button>
+          <button className="btn btn-primary" onClick={(e) => handleAnswer(e)}>
+            {cardQuestions.meanings[1]}
+          </button>
+          <button className="btn btn-primary" onClick={(e) => handleAnswer(e)}>
+            {cardQuestions.meanings[2]}
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  )
+  );
 };

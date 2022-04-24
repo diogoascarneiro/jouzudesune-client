@@ -1,11 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { getCard } from "../../api";
+import { AudioButton } from "../global/AudioButton";
 
 export const CardBack = ({ id, moveToNextCard }) => {
-  //testing html parsing from string to avoid changing the db
-  // const htmlParser = new DOMParser();
-
+  /* Not going to implement something like DOMPurifier to sanitize html for dangerouslySetInnerHtml
+    for now since this is mostly for practicing react and I set the data on the db myself, but
+    I'm leaving this here for future reference if I have the time to implement it later.  
+  */
   const [card, setCard] = useState({});
 
   useEffect(() => {
@@ -34,20 +36,19 @@ export const CardBack = ({ id, moveToNextCard }) => {
         </p>
         <p>
           <b>Listen to the word: </b>
-            <audio src={`/media/${card.wordAudio}`} controls/>
+          <AudioButton src={`/media/${card.wordAudio}`} />
         </p>
-        {/* <p>{htmlParser.parseFromString(card.exampleSentence, "text/html")}</p> */}
         <p>
           <b>Word in a sentence: </b>
-          {card.exampleSentence}
+          <span dangerouslySetInnerHTML={{__html: card.exampleSentence}}></span>
         </p>
         <p>
           <b>Sentence with furigana: </b>
-          {card.exampleWithFurigana}
+          <span dangerouslySetInnerHTML={{__html: card.exampleWithFurigana}}></span>
         </p>
         <p>
           <b>Sentence in kana: </b>
-          {card.exampleInKana}
+          <span dangerouslySetInnerHTML={{__html: card.exampleInKana}}></span>
         </p>
         <p>
           <b>Sentence translation: </b>
@@ -55,7 +56,7 @@ export const CardBack = ({ id, moveToNextCard }) => {
         </p>
         <p>
           <b>Sentence audio: </b>
-          <audio src={`/media/${card.exampleAudio}`} controls/>
+          <AudioButton src={`/media/${card.exampleAudio}`}/>
           
         </p>
         <div className="card-actions justify-end">

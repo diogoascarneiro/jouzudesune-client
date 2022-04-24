@@ -51,7 +51,7 @@ export const Dashboard = () => {
                   <p className="grow-0">{card.cardId.wordInKana}</p>
                   <p className="grow-0">{card.cardId.wordMeanings}</p>
                   <p className="grow-0">Times seen: {card.timesSeen}</p>
-                  <p className="grow-0">Score: {card.score}</p>
+                  <p className="grow-0">Score:{card.score}</p>
                 </div>
               </div>
             );
