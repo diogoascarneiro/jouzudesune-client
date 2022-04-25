@@ -27,7 +27,7 @@ export const Dashboard = () => {
             return (
               <Flippy
       flipOnHover={true}
-      flipDirection="horizontal" className="w-40 h-60 card m-4 shadow-xl">
+      flipDirection="horizontal" className="w-52 h-80 card m-4 shadow-xl">
     <FrontSide className="card shadow-xl opacity-90 border" style={{ backgroundImage: "url(../img/decks/default.jpg)", padding: "0" }}>
                 <div className="card-body items-center text-center justify-between text-black">
                   <h2 className="card-title">{deck.deckId.name}</h2>
@@ -37,7 +37,6 @@ export const Dashboard = () => {
     </FrontSide>
     <BackSide className="card shadow-xl opacity-90 border" style={{ padding: "0" }}>
                <div className="card-body items-center text-center justify-between">
-                    <h2 className="card-title">{deck.deckId.name}</h2>
                     <p className="grow-0"><b>High score: </b>{deck.highScore}</p>
                     <p className="grow-0"><b>Times Played: </b>{deck.timesPlayed}</p>
                   </div>
@@ -52,18 +51,23 @@ export const Dashboard = () => {
       <div className="flex flex-row">
         {userData.cards && userData.cards.map((card) => {
             return (
-              <div
-                className="card w-40 h-60 m-4 opacity-90 shadow-xl"
-                style={{ backgroundImage: "url(../img/decks/default.jpg)" }}
-              >
-                <div className="card-body items-center text-center justify-between text-black">
-                  <h2 className="card-title">{card.cardId.questionWord}</h2>
+              <Flippy
+      flipOnHover={true}
+      flipDirection="horizontal" className="w-52 h-80 card m-4 shadow-xl">
+    <FrontSide className="card shadow-xl opacity-90 border" style={{ backgroundImage: "url(../img/decks/default.jpg)", padding: "0" }}>
+                <div className="card-body items-center text-center justify-center text-black">
+                <h3 className="card-title text-2xl">{card.cardId.questionWord}</h3>
+                </div>
+    </FrontSide>
+    <BackSide className="card shadow-xl opacity-90 border" style={{ padding: "0" }}>
+               <div className="card-body items-center text-center justify-between">
                   <p className="grow-0">{card.cardId.wordInKana}</p>
                   <p className="grow-0">{card.cardId.wordMeanings}</p>
-                  <p className="grow-0">Times seen: {card.timesSeen}</p>
-                  <p className="grow-0">Score:{card.score}</p>
-                </div>
-              </div>
+                  <p className="grow-0"><b>Times seen: </b>{card.timesSeen}</p>
+                  <p className="grow-0"><b>Score: </b>{card.score}</p>
+                  </div>
+    </BackSide>
+  </Flippy>
             );
           })}
       {!userData.cards[0] && <h4>No cards here yet, go out and explore some!</h4>}
