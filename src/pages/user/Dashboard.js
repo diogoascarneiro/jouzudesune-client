@@ -21,6 +21,27 @@ export const Dashboard = () => {
   return (
     <div>
       <h1>sup {userData.username}</h1>
+      <div class="stats stats-vertical lg:stats-horizontal shadow">
+  
+  <div class="stat">
+    <div class="stat-title">Decks studied</div>
+    <div class="stat-value">{userData.decks.length}</div>
+    <div class="stat-desc"></div>
+  </div>
+  
+  <div class="stat">
+    <div class="stat-title">Cards seen</div>
+    <div class="stat-value">{userData.cards.length}</div>
+    <div class="stat-desc"></div>
+  </div>
+  
+  <div class="stat">
+    <div class="stat-title">Some other useful info</div>
+    <div class="stat-value">1,200</div>
+    <div class="stat-desc">↘︎ 90 (14%)</div>
+  </div>
+  
+</div>
       <h2>Your decks:</h2>
       <div className="flex flex-row">
         {userData.decks && userData.decks.map((deck) => {
