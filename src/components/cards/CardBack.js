@@ -18,46 +18,44 @@ export const CardBack = ({ id, moveToNextCard }) => {
   }, []);
 
   const congratulateCard = () => {
-    let congratulations =  ["That's right!", "You got it!", "You know your stuff!", "Yep, that's it!"];
-    return congratulations[Math.floor(Math.random()*congratulations.length)];
-  }
+    let congratulations = [
+      "That's right!",
+      "You got it!",
+      "You know your stuff!",
+      "Yep, that's it!",
+    ];
+    return congratulations[Math.floor(Math.random() * congratulations.length)];
+  };
 
   return (
     <div className="card lg:card-side bg-neutral shadow-xl">
-      <div className="flex justify-center lg:items-center px-20">
-        <h1 className="text-center"> <ruby><rb>{card.questionWord}</rb><rt style={{fontSize: "1rem"}}>{card.wordInKana}</rt>
-          </ruby></h1>
+      <div className="flex justify-center flex-col lg:items-center px-20">
+        <h1 className="text-center">
+          <ruby>
+            <rb>{card.questionWord}</rb>
+            <rt style={{ fontSize: "1rem" }}>{card.wordInKana}</rt>
+          </ruby>
+        </h1>
+        <p className="mb-3">{card.wordMeanings}</p>
+        <AudioButton src={`/media/${card.wordAudio}`}>Listen</AudioButton>
       </div>
       <div className="card-body">
         <h1 className="card-title pb-5">{congratulateCard()}</h1>
         <p>
-          <b>Word meanings: </b>
-          {card.wordMeanings}
-        </p>
-        <p>
-          <b>Listen to the word: </b>
-          <AudioButton src={`/media/${card.wordAudio}`} />
-        </p>
-        <p>
-          <b>Word in a sentence: </b>
-          <span dangerouslySetInnerHTML={{__html: card.exampleSentence}}></span>
+          <b>Example sentence: </b>
+          <br />
+          <h2
+            dangerouslySetInnerHTML={{ __html: card.exampleSentence }}
+          ></h2>
+          <div className="mb-2">(<span dangerouslySetInnerHTML={{ __html: card.exampleInKana }}></span>)</div>
+         <div className="mb-2">{card.exampleTranslation}</div> 
+          <AudioButton src={`/media/${card.exampleAudio}`}>Listen</AudioButton>
         </p>
         <p>
           <b>Sentence with furigana: </b>
-          <span dangerouslySetInnerHTML={{__html: card.exampleWithFurigana}}></span>
-        </p>
-        <p>
-          <b>Sentence in kana: </b>
-          <span dangerouslySetInnerHTML={{__html: card.exampleInKana}}></span>
-        </p>
-        <p>
-          <b>Sentence translation: </b>
-          {card.exampleTranslation}
-        </p>
-        <p>
-          <b>Sentence audio: </b>
-          <AudioButton src={`/media/${card.exampleAudio}`}/>
-          
+          <span
+            dangerouslySetInnerHTML={{ __html: card.exampleWithFurigana }}
+          ></span>
         </p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary" onClick={moveToNextCard}>
