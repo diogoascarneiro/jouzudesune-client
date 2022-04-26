@@ -18,6 +18,7 @@ module.exports = {
     })
   })],
   daisyui: {
-    themes: ["dracula", "pastel"]
+    themes: ["pastel", "dracula"],
+    darkTheme: "dracula"
   }
 }

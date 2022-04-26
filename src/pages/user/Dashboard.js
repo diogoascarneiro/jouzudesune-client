@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/user.context";
 import { getUser } from "../../api";
 import { Loading } from "../../components/global/Loading";
-import { useRef } from 'react';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
 export const Dashboard = () => {
@@ -17,7 +16,7 @@ export const Dashboard = () => {
   }, []);
 
   if (!userData) return <Loading />;
-
+  
   return (
     <div>
       <h1>sup {userData.username}</h1>
