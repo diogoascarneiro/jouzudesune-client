@@ -13,42 +13,20 @@ export const Dashboard = () => {
       const response = await getUser(user._id);
       setUserData(response.data);
     })();
-  }, []);
+  }, [user]);
 
   if (!userData) return <Loading />;
   
   return (
     <div>
-      <h1>sup {userData.username}</h1>
-      <div class="stats stats-vertical lg:stats-horizontal shadow">
-  
-  <div class="stat">
-    <div class="stat-title">Decks studied</div>
-    <div class="stat-value">{userData.decks.length}</div>
-    <div class="stat-desc"></div>
-  </div>
-  
-  <div class="stat">
-    <div class="stat-title">Cards seen</div>
-    <div class="stat-value">{userData.cards.length}</div>
-    <div class="stat-desc"></div>
-  </div>
-  
-  <div class="stat">
-    <div class="stat-title">Some other useful info</div>
-    <div class="stat-value">1,200</div>
-    <div class="stat-desc">↘︎ 90 (14%)</div>
-  </div>
-  
-</div>
-      <h2>Your decks:</h2>
+          <h2>Your decks:</h2>
       <div className="flex flex-row">
         {userData.decks && userData.decks.map((deck) => {
             return (
               <Flippy
       flipOnHover={true}
       flipDirection="horizontal" className="w-52 h-80 card m-4 shadow-xl">
-    <FrontSide className="card shadow-xl opacity-90 border" style={{ backgroundImage: "url(../img/decks/default.jpg)", padding: "0" }}>
+    <FrontSide className="card shadow-xl opacity-90 border" style={{ backgroundImage: `url(..${deck.deckId.image})`, padding: "0" }}>
                 <div className="card-body items-center text-center justify-between text-black">
                   <h2 className="card-title">{deck.deckId.name}</h2>
                   <p className="grow-0">{deck.deckId.description}</p>
@@ -68,7 +46,7 @@ export const Dashboard = () => {
       </div>
 
       <h2>Your cards:</h2>
-      <div className="flex flex-row">
+      <div className="flex flex-row flex-wrap">
         {userData.cards && userData.cards.map((card) => {
             return (
               <Flippy

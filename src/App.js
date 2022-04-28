@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css"
 import { Contact } from './pages/landing/Contact.js';
 import { About } from './pages/landing/About.js';
 import { Dashboard } from './pages/user/Dashboard.js';
+import { Profile } from './pages/user/Profile.js';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Route path="/about" element={<About/>} />
       <Route path="/contacts" element={<Contact/>} />
       <Route path="/user/dashboard" element={<Dashboard/>} />
+      <Route path="/user/profile" element={<Profile />} />
       </Routes>
     </div>
   );
