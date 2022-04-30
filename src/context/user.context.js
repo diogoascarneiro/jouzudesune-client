@@ -49,7 +49,7 @@ authenticateUser();
 }, []);
 
     return (
-    <UserContext.Provider value={{user, isLoggedIn, storeToken, authenticateUser, logoutUser, isLoading}}>
+    <UserContext.Provider value={{user, setUser, isLoggedIn, storeToken, authenticateUser, logoutUser, isLoading}}>
         {children}
     </UserContext.Provider>
   )

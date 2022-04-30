@@ -13,18 +13,24 @@ export const Signup = () => {
   const navigate = useNavigate();
   const handleSubmitForm = async (e) => {
     e.preventDefault();
-
+    
+    if (profilePicture) {
     const profPic = new FormData();
     profPic.append("file", profilePicture);
-
     const response = await upload(profPic);
-
     await signup({
       username,
       email,
       password,
-      profilePicture: response.data.fileUrl,
+      profilePicture: response.data.fileUrl
     });
+    } else {
+      await signup({
+        username,
+        email,
+        password
+      });
+    }
     toast.success("Successfully created new account");
     navigate("/");
   };

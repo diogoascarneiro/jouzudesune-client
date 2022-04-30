@@ -41,7 +41,7 @@ export const CardBack = ({ id, moveToNextCard }) => {
       </div>
       <div className="card-body">
         <h1 className="card-title pb-5">{congratulateCard()}</h1>
-        <p>
+        <div>
           <b>Example sentence: </b>
           <br />
           <h2
@@ -50,7 +50,7 @@ export const CardBack = ({ id, moveToNextCard }) => {
           <div className="mb-2">(<span dangerouslySetInnerHTML={{ __html: card.exampleInKana }}></span>)</div>
          <div className="mb-2">{card.exampleTranslation}</div> 
           <AudioButton src={`/media/${card.exampleAudio}`}>Listen</AudioButton>
-        </p>
+        </div>
         <p>
           <b>Sentence with furigana: </b>
           <span
