@@ -79,10 +79,10 @@ export const Signup = () => {
   </label>
 </div>
 
-          <button className="btn" type="submit">Sign up</button>
+          <button className="btn btn-primary my-5" type="submit">Sign up</button>
         </form>
-        <p className="py-5">Already have an account? </p>
-        <Link className="btn w-full" to={"/login"}>Log In</Link>
+        <p className="text-center">Already have an account? </p>
+        <Link className="btn btn-secondary w-full mt-5" to={"/login"}>Log In</Link>
       </div>
     </div>
   );
