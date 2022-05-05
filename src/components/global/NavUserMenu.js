@@ -11,7 +11,7 @@ export const NavUserMenu = () => {
   }
 
   return (
-    <><p className="ml-4">{greetUser(user.username)}</p>
+    <><p className="">{greetUser(user.username)}</p>
     <div className="flex-none">
       <div className="dropdown dropdown-end">
         <label tabIndex="0" className="btn btn-ghost btn-circle avatar ml-4">
@@ -23,20 +23,21 @@ export const NavUserMenu = () => {
           tabIndex="0"
           className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
         >
+         <li><NavLink to="/decks">Decks</NavLink></li>
           <li>
             <NavLink to="/user/profile" className="justify-between">
               Profile
               {/* <span className="badge">New</span> */}
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/user/settings">Settings</NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/user/dashboard">Dashboard</NavLink>
           </li>
           <li>
-            <NavLink to="/user/logout" onClick={logoutUser}>
+            <NavLink to="/" onClick={logoutUser}>
               Logout
             </NavLink>
           </li>

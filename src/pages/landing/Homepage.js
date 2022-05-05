@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export const Homepage = ({children}) => {
   return (
@@ -7,8 +8,8 @@ export const Homepage = ({children}) => {
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
       <h1 className="mb-5 text-5xl font-bold">Ready to learn some Japanese?</h1>
-      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-      <button className="btn btn-primary">Get Started</button>
+      <p className="mb-5">Jouzu desu ne! is an online flashcards app for learning Japanese words, based on the Anki Core 2k deck. The goal is to teach you the most essential words and Kanji in a fast and fun way. </p>
+      <button className="btn btn-primary"><Link to="/signup">Let's get started!</Link></button>
     </div>
   </div>
 </div>

@@ -20,7 +20,7 @@ export const Login = () => {
       storeToken(response.data.authToken);
       authenticateUser();
       toast.success("Logged in successfully!");
-      navigate("/");
+      navigate("/decks");
     } catch (e) {
       console.log(e);
       toast.error("Login failed, please try again.");

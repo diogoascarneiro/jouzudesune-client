@@ -40,7 +40,7 @@ export const CardBack = ({ id, moveToNextCard }) => {
         <AudioButton src={`/media/${card.wordAudio}`}>Listen</AudioButton>
       </div>
       <div className="card-body">
-        <h1 className="card-title pb-5">{congratulateCard()}</h1>
+        <h1 className="card-title text-3xl pb-5">{congratulateCard()}</h1>
         <div>
           <b>Example sentence: </b>
           <br />
