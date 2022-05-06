@@ -1,12 +1,13 @@
 import Flippy, { FrontSide, BackSide } from "react-flippy";
+import { SectionHeader } from "../../components/global/SectionHeader";
 import { DashboardCardPagination } from "./DashboardCardPagination";
 
 export const DashboardCards = ( {cardsShowing, cardPaginationHandler}) => {
 
   return (
       <>
-    <h2>Your cards:</h2>
-    {cardsShowing.currentCards && <DashboardCardPagination cardPaginationHandler={cardPaginationHandler}/>}
+    <SectionHeader>Your cards:</SectionHeader>
+    {"currentCards" in cardsShowing && cardsShowing.currentCards.length > 0 && <DashboardCardPagination cardPaginationHandler={cardPaginationHandler}/>}
     <div className="flex flex-row flex-wrap justify-center">
         {cardsShowing.currentCards &&
           cardsShowing.currentCards.map((card, i) => {
@@ -50,9 +51,9 @@ export const DashboardCards = ( {cardsShowing, cardPaginationHandler}) => {
             );
           })}
           </div>
-          {cardsShowing.currentCards && <DashboardCardPagination cardPaginationHandler={cardPaginationHandler}/>}
-        {!cardsShowing.currentCards && (
-          <h4>No cards here yet, go out and explore some!</h4>
+          {"currentCards" in cardsShowing && cardsShowing.currentCards.length > 0 && <DashboardCardPagination cardPaginationHandler={cardPaginationHandler}/>}
+        {"currentCards" in cardsShowing && cardsShowing.currentCards.length === 0 && (
+          <h4 className="text-center py-20">No cards here yet, go out and explore some!</h4>
         )}
           </>
   )

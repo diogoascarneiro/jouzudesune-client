@@ -18,15 +18,16 @@ export const Deck = () => {
     const [cardQuestions, setCardQuestions] = useState({});
     const [totalScore, setTotalScore] = useState(0);
     const [cardScores, setCardScores] = useState([]);
-
+    const [bestPossibleScore, setBestPossibleScore] = useState();
+    const numOfOptions = 5;
     const {deckId} = useParams();
 //    const navigate = useNavigate();
 
-    // create an array of three possible answers for each card - two false, one correct
+    // create an array of possible answers for each card - one correct, the rest (determined by numOfOptions) false
     const generateQuestions = (currentCard, deck) => {
        // Answer options for card meanings
         const correctMeaning = deck.cards[currentCard].wordMeanings;
-        const possibleMeanings = deck.cards.filter((card) => card._id !==  deck.cards[currentCard]._id).map((card) => card.wordMeanings).slice(0, 2);
+        const possibleMeanings = deck.cards.filter((card) => card._id !==  deck.cards[currentCard]._id).map((card) => card.wordMeanings).slice(0, numOfOptions-1);
         possibleMeanings.push(correctMeaning);
         const shuffledMeanings = [...possibleMeanings].sort(() => 0.5 - Math.random());    
        
@@ -60,20 +61,21 @@ export const Deck = () => {
         ( async () => {
           const response = await getDeck(deckId);
           setDeck(response.data);
+          setBestPossibleScore(response.data.cards.length * (numOfOptions-1));
           generateQuestions(0, response.data);
       })()
     }, []);
 
     if (!deck) return <Loading/>
 
-    if (currentCard >= deck.cards.length) return <DeckComplete totalScore={totalScore} cardScores={cardScores}/>
+    if (currentCard >= deck.cards.length) return <DeckComplete totalScore={totalScore} bestPossibleScore={bestPossibleScore} cardScores={cardScores}/>
 
   return (
     <div>
         <h3 className="">{deck.name}</h3>
         <div className="grid place-items-center">
         {cardState === "front" ? 
-        <CardFront id={deck.cards[currentCard]._id} showCardBack={showCardBack} cardQuestions={cardQuestions} trackScore={trackScore}/> :
+        <CardFront id={deck.cards[currentCard]._id} showCardBack={showCardBack} cardQuestions={cardQuestions} numOfOptions={numOfOptions} trackScore={trackScore}/> :
         <CardBack id={deck.cards[currentCard]._id} moveToNextCard={moveToNextCard}/>}
         </div>
     </div>

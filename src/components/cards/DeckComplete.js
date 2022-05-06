@@ -3,7 +3,7 @@ import { UserContext } from "../../context/user.context";
 import { useContext, useEffect } from "react";
 import { getUserDeckData, updateAllDeckCards, updateUserDeckData } from "../../api";
 
-export const DeckComplete = ({ totalScore, cardScores }) => {
+export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
   const { user } = useContext(UserContext);
   const { deckId } = useParams();
 
@@ -47,7 +47,7 @@ export const DeckComplete = ({ totalScore, cardScores }) => {
         <div className="card-body items-center text-center">
           <h2 className="card-title">You did it!</h2>
           <p>
-            <b>Your score was:</b> {totalScore}
+            <b>Your score was:</b> {totalScore} / {bestPossibleScore}
           </p>
           <div className="card-actions">
             <Link className="btn btn-primary" to="/decks">

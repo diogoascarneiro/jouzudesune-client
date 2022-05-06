@@ -15,18 +15,22 @@ export const Dashboard = () => {
   // need to make a show more button here
   useEffect(() => {
     (async () => {
+      if (user) {
       const response = await getUser(user._id);
       setUserData(response.data);
+    }
     })();
   }, [user]);
 
   useEffect(() => {
     (async () => {
-      setCardsShowing({
+      if (userData && "cards" in userData) {
+        setCardsShowing({
         page: 1,
         numOfCards: 10,
         currentCards: userData.cards.slice(0, 10),
       });
+    }  
     })();
   }, [userData]);
 
@@ -49,15 +53,15 @@ export const Dashboard = () => {
     setCardsShowing(nextCardsShowing);
   };
 
-  if (!userData) return <Loading />;
+  if (!userData && !cardsShowing) return <Loading />;
 
   return (
     <div className="p-5">
-      <DashboardDecks userData={userData} />
-      <DashboardCards
+      {userData && <DashboardDecks userData={userData} />}
+      {cardsShowing && <DashboardCards
         cardsShowing={cardsShowing}
         cardPaginationHandler={cardPaginationHandler}
-      />
+      />}
     </div>
   );
 };

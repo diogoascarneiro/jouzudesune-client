@@ -15,11 +15,11 @@ export const DeckList = () => {
 
   return (
     <div className="p-5">
-      <h1>Decks</h1>
-      <div className="flex flex-row">
+      <h3 className="border-0 rounded-xl w-full text-center px-12 py-1 bg-secondary">Decks</h3>
+      <div className="flex flex-row justify-center">
         {deckList.map((deck) => {
           return (
-            <Link to={deck._id} key={deck._id} className="m-4">
+            <Link to={deck._id} key={deck._id} className="my-5 mx-2">
               <Flippy
                 flipOnHover={true}
                 flipDirection="horizontal"

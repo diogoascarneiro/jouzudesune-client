@@ -1,9 +1,10 @@
 import Flippy, { FrontSide, BackSide } from "react-flippy";
+import { SectionHeader } from "../../components/global/SectionHeader";
 
 export const DashboardDecks = ({userData}) => {
   return (
     <div>
-     <h2>Your decks:</h2>
+     <SectionHeader>Your decks</SectionHeader>
       <div className="flex flex-row justify-center">
         {userData.decks &&
           userData.decks.map((deck, i) => {
@@ -45,7 +46,7 @@ export const DashboardDecks = ({userData}) => {
             );
           })}
         {!userData.decks[0] && (
-          <h4>No decks here yet, go out and explore some!</h4>
+          <h4 className="text-center py-20">No decks here yet, go out and explore some!</h4>
         )}
       </div>
       </div>

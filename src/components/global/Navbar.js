@@ -6,6 +6,7 @@ import { themeChange } from "theme-change";
 
 export const Navbar = () => {
   const { isLoggedIn } = useContext(UserContext);
+  const projectName = ["Jouzu desu ne!", "上手ですね!"];
 
   useEffect(() => {
     themeChange(false)
@@ -34,7 +35,7 @@ export const Navbar = () => {
       <li><NavLink to="/signup">Sign up</NavLink></li>
       </ul>
     </div>}
-    <a className="btn btn-ghost normal-case text-xl">Jouzu desu ne!</a>
+    <NavLink to={isLoggedIn ? "/decks" : "/"} className="btn btn-ghost normal-case text-xl">{projectName[Math.round(Math.random())]}</NavLink>
   </div>
   <div className="navbar-center hidden lg:flex">
   </div>
