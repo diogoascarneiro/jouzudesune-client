@@ -27,10 +27,10 @@ export const DashboardDecks = ({userData}) => {
                   </div>
                   </FrontSide>
                   <BackSide
-                    className="card shadow-xl opacity-90 border"
+                    className="card shadow-xl border"
                     style={{ padding: "0" }}
                   >
-                    <div className="card-body items-center text-center justify-between">
+                    <div className="card-body bg-secondary items-center text-center justify-between">
                       <p className="grow-0">
                         <b>High score: </b>
                         {deck.highScore}

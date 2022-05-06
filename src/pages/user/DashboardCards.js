@@ -30,17 +30,17 @@ export const DashboardCards = ( {cardsShowing, cardPaginationHandler}) => {
                   </div>
                 </FrontSide>
                 <BackSide
-                  className="card shadow-xl opacity-90 border"
+                  className="card shadow-xl border"
                   style={{ padding: "0" }}
                 >
-                  <div className="card-body items-center text-center justify-between">
-                    <p className="grow-0">{card.cardId.wordInKana}</p>
-                    <p className="grow-0">{card.cardId.wordMeanings}</p>
-                    <p className="grow-0">
+                  <div className="card-body bg-secondary items-center text-center justify-between">
+                    <p className="grow-0 text-4xl">{card.cardId.wordInKana}</p>
+                    <p className="grow-0 text-5xl">{card.cardId.wordMeanings}</p>
+                    <p className="grow-0 text-xl">
                       <b>Times seen: </b>
                       {card.timesSeen}
                     </p>
-                    <p className="grow-0">
+                    <p className="grow-0 text-xl">
                       <b>Score: </b>
                       {card.score}
                     </p>
