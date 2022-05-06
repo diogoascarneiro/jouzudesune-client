@@ -7,12 +7,16 @@ import { useContext } from "react";
 import { toast } from "react-toastify";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const { isLoggedIn, storeToken, authenticateUser } = useContext(UserContext);
+
+  if (isLoggedIn) {
+    navigate("/user/profile");
+  }
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { storeToken, authenticateUser } = useContext(UserContext);
-
-  const navigate = useNavigate();
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     try {

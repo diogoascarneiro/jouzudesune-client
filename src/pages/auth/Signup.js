@@ -3,14 +3,23 @@ import { signup, upload } from "../../api";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { UserContext } from "../../context/user.context";
 
 export const Signup = () => {
+
+  const navigate = useNavigate();
+  const { isLoggedIn } = useContext(UserContext);
+
+  if (isLoggedIn) {
+    navigate("/user/profile");
+  }
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [profilePicture, setProfilePicture] = useState();
 
-  const navigate = useNavigate();
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     

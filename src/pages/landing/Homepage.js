@@ -1,6 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/user.context";
 
 export const Homepage = ({children}) => {
+
+  const navigate = useNavigate();
+  const { isLoggedIn } = useContext(UserContext);
+
+  if (isLoggedIn) {
+    navigate("/decks");
+  }
+  
   return (
     <div>
      <div className="hero min-h-screen" style={{backgroundImage: "url(./img/sakura-hero.jpg)"}}>

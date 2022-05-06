@@ -7,6 +7,11 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
   const { user } = useContext(UserContext);
   const { deckId } = useParams();
 
+  const winImage = () => {
+    const winImages = ["/img/thumbs-up1.gif", "/img/thumbs-up2.gif", "/img/thumbs-up3.gif", "/img/thumbs-up4.gif", "/img/thumbs-up5.gif" ];
+    return winImages[Math.floor(Math.random() * winImages.length)];
+  };
+
   const deckUpdater = async () => {
     const currentDeck = await getUserDeckData(user, deckId);
     const deckData = { deckId };
@@ -39,8 +44,8 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
           <img
-            src={"/img/goku-thumbs-up.png"}
-            alt="goku thumbs up"
+            src={winImage}
+            alt="Thumbs up"
             className="rounded-xl"
           />
         </figure>
