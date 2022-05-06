@@ -44,7 +44,7 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
           <img
-            src={winImage}
+            src={winImage()}
             alt="Thumbs up"
             className="rounded-xl"
           />
