@@ -6,6 +6,7 @@ import { CardBack } from "../../components/cards/CardBack";
 import { Loading } from "../../components/global/Loading";
 //import { useNavigate } from "react-router-dom";
 import { DeckComplete } from "../../components/cards/DeckComplete";
+import { SectionHeader } from "../../components/global/SectionHeader";
 
 /* 
  Note to self 2: turn all these states into a reducer
@@ -19,9 +20,19 @@ export const Deck = () => {
     const [totalScore, setTotalScore] = useState(0);
     const [cardScores, setCardScores] = useState([]);
     const [bestPossibleScore, setBestPossibleScore] = useState();
+    const [shuffledDeck, setShuffledDeck] =  useState();
+
     const numOfOptions = 5;
     const {deckId} = useParams();
 //    const navigate = useNavigate();
+
+    const shuffleDeck = (deck) => {
+      const shuffledCards = deck.cards.sort(() => 0.5 - Math.random());
+      console.log('shuffledCards', shuffledCards);
+      const newDeck = {...deck};
+      newDeck.cards = shuffledCards;
+      setShuffledDeck(newDeck);
+    }
 
     // create an array of possible answers for each card - one correct, the rest (determined by numOfOptions) false
     const generateQuestions = (currentCard, deck) => {
@@ -62,21 +73,29 @@ export const Deck = () => {
           const response = await getDeck(deckId);
           setDeck(response.data);
           setBestPossibleScore(response.data.cards.length * (numOfOptions-1));
-          generateQuestions(0, response.data);
+          shuffleDeck(response.data);
       })()
     }, []);
 
-    if (!deck) return <Loading/>
+    useEffect(() => {
+      ( async () => {
+        console.log('deck', deck);
+        console.log('shuffledDeck', shuffledDeck)
+        if (shuffledDeck) generateQuestions(0, shuffledDeck);
+    })()
+  }, [shuffledDeck]);
+
+    if (!shuffledDeck) return <Loading/>
 
     if (currentCard >= deck.cards.length) return <DeckComplete totalScore={totalScore} bestPossibleScore={bestPossibleScore} cardScores={cardScores}/>
 
   return (
-    <div>
-        <h3 className="">{deck.name}</h3>
+    <div className="p-5">
+        <SectionHeader className="mb-5">{deck.name}</SectionHeader>
         <div className="grid place-items-center">
         {cardState === "front" ? 
-        <CardFront id={deck.cards[currentCard]._id} showCardBack={showCardBack} cardQuestions={cardQuestions} numOfOptions={numOfOptions} trackScore={trackScore}/> :
-        <CardBack id={deck.cards[currentCard]._id} moveToNextCard={moveToNextCard}/>}
+        <CardFront id={shuffledDeck.cards[currentCard]._id} showCardBack={showCardBack} cardQuestions={cardQuestions} numOfOptions={numOfOptions} trackScore={trackScore}/> :
+        <CardBack id={shuffledDeck.cards[currentCard]._id} moveToNextCard={moveToNextCard}/>}
         </div>
     </div>
   )
