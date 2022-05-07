@@ -1,19 +1,11 @@
-import { useState, useEffect } from "react";
-import { getCard } from "../../api";
 import { AudioButton } from "../global/AudioButton";
 import ReactTooltip from "react-tooltip";
 
-export const CardNew = ({ id, moveToNextCard }) => {
-  const [card, setCard] = useState({});
-
-  useEffect(() => {
-    (async () => {
-      const response = await getCard(id);
-      setCard(response.data);
-    })();
-  }, []);
+export const CardNew = ({ card, moveToNextCard }) => {
 
   return (
+      <>
+      <h1>New card!</h1>
     <div className="card bg-neutral shadow-xl">
       <div className="flex justify-center flex-col lg:items-center px-20">
         <h1 className="text-center">
@@ -54,5 +46,6 @@ export const CardNew = ({ id, moveToNextCard }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };

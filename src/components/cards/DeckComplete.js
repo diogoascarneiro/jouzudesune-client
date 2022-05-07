@@ -1,10 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../../context/user.context";
 import { useContext, useEffect } from "react";
-import { getUserDeckData, updateAllDeckCards, updateUserDeckData } from "../../api";
+import { getUser, getUserDeckData, updateAllDeckCards, updateUserDeckData } from "../../api";
 
 export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { deckId } = useParams();
 
   const winImage = () => {
@@ -32,10 +32,19 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
     await updateAllDeckCards(user, cardScores);
   }
 
+  const updateUserContext = async () => {
+   const response = await getUser(user._id);
+   const updatedUserContext = {...user};
+   updatedUserContext.cards = response.data.cards;
+   updatedUserContext.decks = response.data.decks;
+   setUser(updatedUserContext);
+  }
+
   useEffect(() => {
     (async () => {
      await deckUpdater();
      await cardUpdater();
+     await updateUserContext();
     })();
   }, []);
 
