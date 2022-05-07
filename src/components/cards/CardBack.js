@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCard } from "../../api";
 import { AudioButton } from "../global/AudioButton";
-import ReactHover, { Trigger, Hover } from "react-hover";
+import ReactTooltip from "react-tooltip";
 
 export const CardBack = ({ id, moveToNextCard }) => {
   /* Not going to implement something like DOMPurifier to sanitize html for dangerouslySetInnerHtml
@@ -27,12 +27,6 @@ export const CardBack = ({ id, moveToNextCard }) => {
     return congratulations[Math.floor(Math.random() * congratulations.length)];
   };
 
-  const optionsCursorTrueWithMargin = {
-    followCursor: true,
-    shiftX: 20,
-    shiftY: 0
-  };
-
   return (
     <div className="card lg:card-side bg-neutral shadow-xl">
       <div className="flex justify-center flex-col lg:items-center px-20">
@@ -50,26 +44,24 @@ export const CardBack = ({ id, moveToNextCard }) => {
         <div>
           <b>Example sentence: </b>
           <br />
-          <ReactHover
-                  options={optionsCursorTrueWithMargin}>
-                  <Trigger type='trigger'>
-                  <h2
+          <h2
+            data-tip
+            data-for="exampleSentenceFurigana" className="underline w-fit"
             dangerouslySetInnerHTML={{ __html: card.exampleSentence }}
           ></h2>
-                  </Trigger>
-                  <Hover type='hover'>
-                  <div className="mb-2">(<span dangerouslySetInnerHTML={{ __html: card.exampleInKana }}></span>)</div>
-                                      </Hover>
-                  </ReactHover>
-         <div className="mb-2">{card.exampleTranslation}</div> 
+          <ReactTooltip
+            place="top"
+            type="light"
+            effect="solid"
+            id="exampleSentenceFurigana"
+          >
+            <span className="text-xl"
+              dangerouslySetInnerHTML={{ __html: card.exampleWithFurigana }}
+            ></span>
+          </ReactTooltip>
+          <div className="mb-2">{card.exampleTranslation}</div>
           <AudioButton src={`/media/${card.exampleAudio}`}>Listen</AudioButton>
         </div>
-        <p>
-          <b>Sentence with furigana: </b>
-          <span
-            dangerouslySetInnerHTML={{ __html: card.exampleWithFurigana }}
-          ></span>
-        </p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary" onClick={moveToNextCard}>
             Next card
