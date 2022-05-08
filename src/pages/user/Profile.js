@@ -43,7 +43,7 @@ export const Profile = () => {
   
   useEffect(() => {
     (async () => {
-      setProfilePicture(userData.profilePicture);
+     setProfilePicture(userData.profilePicture);
     })();
   }, [userData]);
 
@@ -51,7 +51,7 @@ export const Profile = () => {
 
   return (
     <div className="flex flex-wrap lg:flex-nowrap min-h-[90vh]">
-      <div className="border rounded-xl m-5 w-full lg:w-96 shadow-xl flex-col">
+      <div className="border rounded-xl m-5 w-full lg:w-2/4 shadow-xl flex-col">
         <div className="border-hidden rounded-t-xl py-2 px-4 h-16 w-full bg-secondary">
         <h3>Your profile info</h3>
         
@@ -64,20 +64,20 @@ export const Profile = () => {
               <img src={profilePicture} />
             </div>
           </div>
-          <div className="flex flex-col mt-4">
+          <div className="w-full flex justify-center mt-4">
             <form
               onSubmit={handleUpdateDataForm}
-              encType="multipart/form-data"
+              encType="multipart/form-data" className="flex flex-col w-2/4"
             >
               <label className="input-group mb-5">
                 <input type="file" className="" onChange={(e) => setNewProfilePicture(e.target.files[0])}/>
               </label>
-              <label className="input-group mb-3">
+              <label className="input-group my-3">
                 <span className="text-sm w-2/5">Email</span>
                 <input
                   type="text"
                   placeholder={email}
-                  className="input input-bordered" onChange={(e) => setEmail(e.target.value)}
+                  className="input input-bordered w-3/5" onChange={(e) => setEmail(e.target.value)}
                 />
               </label>
               <label className="input-group mb-3">
@@ -85,7 +85,7 @@ export const Profile = () => {
                 <input
                   type="password"
                   placeholder="********"
-                  className="input input-bordered" onChange={(e) => setPassword(e.target.value)}
+                  className="input input-bordered w-3/5" onChange={(e) => setPassword(e.target.value)}
                 />
               </label>
               <button type="submit" className="btn btn-primary btn-block ">
@@ -95,32 +95,36 @@ export const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="border rounded-xl m-5 w-full shadow-xl flex-col">
+      <div className="border rounded-xl m-5 w-full lg:w-2/4 shadow-xl flex-col">
         <h2 className="border rounded-t-xl px-4 h-16 w-full bg-secondary">
           Your stats
         </h2>
         <div className="p-5">
-          <h4>Decks</h4>
-          <div className="stats shadow">
-            <div className="stat">
+        <h4 className="w-fit border-0 rounded-xl py-2 px-4 bg-primary">Decks</h4>
+        <div className="flex w-full justify-center">
+          <div className="stats shadow bg-secondary my-5 w-full text-center">
+            <div className="stat p-10 ">
               <div className="stat-title">Total decks played</div>
               <div className="stat-value">{userData.decks.length}</div>
             </div>
-            <div className="stat">
+            <div className="stat p-10">
               <div className="stat-title">Average deck score</div>
               <div className="stat-value">{userData.decks.length}</div>
             </div>
           </div>
-          <h4>Cards</h4>
-          <div className="stats shadow">
-            <div className="stat">
+          </div>
+          <h4 className="w-fit border-0 rounded-xl py-2 px-4 bg-primary">Cards</h4>
+          <div className="flex w-full justify-center">
+          <div className="stats shadow bg-secondary my-5 w-full text-center">
+            <div className="stat p-10">
               <div className="stat-title">Total cards seen</div>
               <div className="stat-value">{userData.cards.length}</div>
             </div>
-            <div className="stat">
+            <div className="stat p-10">
               <div className="stat-title">Average card score</div>
               <div className="stat-value">{userData.cards.length}</div>
             </div>
+          </div>
           </div>
         </div>
       </div>
