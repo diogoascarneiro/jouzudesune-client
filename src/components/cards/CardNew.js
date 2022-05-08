@@ -7,25 +7,21 @@ export const CardNew = ({ card, moveToNextCard }) => {
       <>
       <h1>New card!</h1>
     <div className="card bg-neutral shadow-xl">
-      <div className="flex justify-center flex-col lg:items-center px-20">
-        <h1 className="text-center">
-          <ruby>
-            <rb>{card.questionWord}</rb>
-            <rt style={{ fontSize: "1rem" }}>{card.wordInKana}</rt>
-          </ruby>
-        </h1>
-        <p className="mb-3">{card.wordMeanings}</p>
+      <div className="flex justify-center flex-col lg:items-center p-10">
+        <h1 className="text-center">{card.questionWord}</h1>
+        <h4 className="mt-6">{card.wordInKana}</h4>
+        <h3 className="mb-3">{card.wordMeanings}</h3>
         <AudioButton src={`/media/${card.wordAudio}`}>Listen</AudioButton>
       </div>
-      <div className="card-body">
+      <div className="card-body text-center">
         <div>
-          <b>Example sentence: </b>
+          <b className="">Example sentence: </b>
           <br />
-          <h2
+          <h3
             data-tip
-            data-for="exampleSentenceFurigana" className="underline w-fit"
+            data-for="exampleSentenceFurigana" className="border-0 rounded-xl py-4 pl-5 pr-1 my-3 bg-secondary w-fit"
             dangerouslySetInnerHTML={{ __html: card.exampleSentence }}
-          ></h2>
+          ></h3>
           <ReactTooltip
             place="top"
             type="light"
@@ -36,7 +32,7 @@ export const CardNew = ({ card, moveToNextCard }) => {
               dangerouslySetInnerHTML={{ __html: card.exampleWithFurigana }}
             ></span>
           </ReactTooltip>
-          <div className="mb-2">{card.exampleTranslation}</div>
+          <div className="mb-2 text-2xl">{card.exampleTranslation}</div>
           <AudioButton src={`/media/${card.exampleAudio}`}>Listen</AudioButton>
         </div>
         <div className="card-actions justify-end">
