@@ -5,12 +5,11 @@ import { Loading } from "../../components/global/Loading";
 import { DashboardDecks } from "./DashboardDecks";
 import { DashboardCards } from "./DashboardCards";
 
-//import ReactCSSTransitionGroup from 'react-transition-group';
-
 export const Dashboard = () => {
   const { user } = useContext(UserContext);
   const [userData, setUserData] = useState();
   const [cardsShowing, setCardsShowing] = useState({});
+  const [showCards, setShowCards] = useState(true);
 
   // need to make a show more button here
   useEffect(() => {
@@ -41,27 +40,33 @@ export const Dashboard = () => {
     );
     if (option === "showPage")
       return `Page ${nextCardsShowing.page} / ${numOfPages}`;
-    if (option === "prev" && nextCardsShowing.page - 1 >= 1)
+    if (option === "prev" && nextCardsShowing.page - 1 >= 1) {
+      setShowCards(false);
       nextCardsShowing.page -= 1;
-    if (option === "next" && nextCardsShowing.page + 1 <= numOfPages)
+    }
+    if (option === "next" && nextCardsShowing.page + 1 <= numOfPages) {
+      setShowCards(false);
       nextCardsShowing.page += 1;
+    }
     nextCardsShowing.currentCards = userData.cards.slice(
       (nextCardsShowing.page - 1) * nextCardsShowing.numOfCards,
       (nextCardsShowing.page - 1) * nextCardsShowing.numOfCards +
         nextCardsShowing.numOfCards
     );
     setCardsShowing(nextCardsShowing);
+    
   };
 
   if (!userData && !cardsShowing) return <Loading />;
 
   return (
     <div className="p-5">
-      {userData && <DashboardDecks userData={userData} />}
       {cardsShowing && <DashboardCards
         cardsShowing={cardsShowing}
         cardPaginationHandler={cardPaginationHandler}
+        showCards={showCards} setShowCards={setShowCards}
       />}
+      {userData && <DashboardDecks userData={userData} />}
     </div>
   );
 };

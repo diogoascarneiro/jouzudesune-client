@@ -16,7 +16,7 @@ export const NavUserMenu = () => {
       <div className="dropdown dropdown-end">
         <label tabIndex="0" className="btn btn-ghost btn-circle avatar ml-4">
           <div className="w-10 rounded-full">
-            <img src={user.profilePicture} />
+            <img src={user.profilePicture} alt="your profile picture" />
           </div>
         </label>
         <ul

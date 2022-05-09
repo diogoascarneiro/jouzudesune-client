@@ -50,7 +50,7 @@ export const Signup = () => {
         <h1 className="text-4xl">Sign up</h1>
         <div className="avatar flex justify-center">
           <div className="w-32 mask mask-squircle">
-            <img className="" src={profilePicture ? URL.createObjectURL(profilePicture) : "./img/placeholderProfilePic.png"} />
+            <img className="" alt={profilePicture ? "Your profile Picture" :"Profile Picture placeholder"} src={profilePicture ? URL.createObjectURL(profilePicture) : "./img/placeholderProfilePic.png"} />
           </div>
         </div>
         <form

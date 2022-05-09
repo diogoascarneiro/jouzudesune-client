@@ -61,7 +61,7 @@ export const Profile = () => {
                 <i>You can change your profile details here.</i>
           <div className="avatar justify-center w-full">
             <div className="w-36 mt-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={profilePicture} />
+              <img src={profilePicture} alt="Your profile picture"/>
             </div>
           </div>
           <div className="w-full flex justify-center mt-4">
