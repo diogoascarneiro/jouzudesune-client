@@ -8,7 +8,7 @@ export const Homepage = ({children}) => {
   const { isLoggedIn } = useContext(UserContext);
 
   if (isLoggedIn) {
-    navigate("/decks");
+    navigate("/start");
   }
   
   return (

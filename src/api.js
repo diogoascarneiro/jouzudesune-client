@@ -50,6 +50,13 @@ export const updateAllDeckCards = (user, cards) => {
     return axios.put(`${baseURL}/users/${user._id}/cards/`, cards)
 }
 
+export const getRandomDeck = (options) => {
+    return axios.get(`${baseURL}/decks/random`, {params: {
+        number: options.number,
+        type: options.type,
+        userId: options.userId
+    }})
+}
 /* Auth */
 
 export const signup = (user) => {

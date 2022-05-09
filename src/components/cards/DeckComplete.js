@@ -5,7 +5,7 @@ import { getUser, getUserDeckData, updateAllDeckCards, updateUserDeckData } from
 
 export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
   const { user, setUser } = useContext(UserContext);
-  const { deckId } = useParams();
+  const { deckId } = useParams() || null;
 
   const winImage = () => {
     const winImages = ["/img/thumbs-up1.gif", "/img/thumbs-up2.gif", "/img/thumbs-up3.gif", "/img/thumbs-up4.gif", "/img/thumbs-up5.gif" ];
@@ -42,7 +42,7 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
 
   useEffect(() => {
     (async () => {
-     await deckUpdater();
+    if (deckId) await deckUpdater();
      await cardUpdater();
      await updateUserContext();
     })();
@@ -64,9 +64,11 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
             <b>Your score was:</b> {totalScore} / {bestPossibleScore}
           </p>
           <div className="card-actions">
-            <Link className="btn btn-primary" to="/decks">
+          {deckId ? <Link className="btn btn-primary" to="/decks">
               Back to deck list
-            </Link>
+            </Link> : <Link className="btn btn-primary" to="/start">
+              Back
+            </Link>}
           </div>
         </div>
       </div>

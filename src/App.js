@@ -12,6 +12,8 @@ import { About } from './pages/landing/About.js';
 import { Dashboard } from './pages/user/Dashboard.js';
 import { Profile } from './pages/user/Profile.js';
 import { IsPrivate } from './components/global/IsPrivate.js';
+import { StartPage } from './pages/landing/StartPage.js';
+import { FreePractice } from './pages/decks/FreePractice.js';
 
 function App() {
   return (
@@ -20,8 +22,10 @@ function App() {
       <Navbar/>
       <Routes>
       <Route path="/" element={<Homepage></Homepage>} />
+      <Route path="/start" element={<IsPrivate><StartPage/></IsPrivate>} />
       <Route path="/decks" element={<IsPrivate><DeckList/></IsPrivate>} />
       <Route path="/decks/:deckId" element={<IsPrivate><Deck/></IsPrivate>} />
+      <Route path="/free-practice" element={<IsPrivate><FreePractice/></IsPrivate>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/signup" element={<Signup/>} />
       <Route path="/about" element={<About/>} />
