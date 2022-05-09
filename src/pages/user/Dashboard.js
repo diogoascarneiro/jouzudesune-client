@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/user.context";
 import { getUser } from "../../api";
 import { Loading } from "../../components/global/Loading";
-import { DashboardDecks } from "./DashboardDecks";
-import { DashboardCards } from "./DashboardCards";
+import { DashboardDecksList } from "./DashboardDecksList";
+import { DashboardCardsList } from "./DashboardCardsList";
 
 export const Dashboard = () => {
   const { user } = useContext(UserContext);
@@ -61,12 +61,12 @@ export const Dashboard = () => {
 
   return (
     <div className="p-5">
-      {cardsShowing && <DashboardCards
+      {cardsShowing && <DashboardCardsList
         cardsShowing={cardsShowing}
         cardPaginationHandler={cardPaginationHandler}
         showCards={showCards} setShowCards={setShowCards}
       />}
-      {userData && <DashboardDecks userData={userData} />}
+      {userData && <DashboardDecksList userData={userData} />}
     </div>
   );
 };

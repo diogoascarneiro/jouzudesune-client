@@ -1,9 +1,9 @@
 import { DashboardCard } from "../../components/dashboard/DashboardCard";
 import { SectionHeader } from "../../components/global/SectionHeader";
 import { DashboardCardPagination } from "./DashboardCardPagination";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-export const DashboardCards = ({ cardsShowing, cardPaginationHandler, showCards, setShowCards }) => {
+export const DashboardCardsList = ({ cardsShowing, cardPaginationHandler, showCards, setShowCards }) => {
   
   useEffect(()=>{
     setShowCards(true);
@@ -18,7 +18,7 @@ export const DashboardCards = ({ cardsShowing, cardPaginationHandler, showCards,
             cardPaginationHandler={cardPaginationHandler} 
           />
         )}
-      <div className="flex flex-row flex-wrap justify-center h-fit">
+      <div className="flex flex-row flex-wrap justify-center">
         {cardsShowing.currentCards && showCards &&
           cardsShowing.currentCards.map((card, i) => {
             return (

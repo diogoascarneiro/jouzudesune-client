@@ -1,8 +1,22 @@
 import { Transition } from "@headlessui/react";
-//import { useState, useEffect } from "react";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
+import { FaStar, FaStarHalf } from "react-icons/fa";
+import { useEffect } from "react";
 
 export const DashboardCard = ({card, index, cardIsShowing}) => {
+const stars = [];
+
+for (let i = 0; i < card.averageScore; i++) {
+  stars.push(<FaStar/>);
+}
+
+const starRatingGenerator = () => {
+ 
+}
+
+useEffect(()=>{
+  starRatingGenerator();
+}, [card])
 
   return (
     <Transition
@@ -50,10 +64,12 @@ export const DashboardCard = ({card, index, cardIsShowing}) => {
             <b>Times seen: </b>
             {card.timesSeen}
           </p>
-          <p className="grow-0 text-xl">
-            <b>Score: </b>
-            {card.score}
-          </p>
+          <div className="grow-0 text-xl">
+            <b>Average score: </b>
+            <div className="flex justify-center">{stars}</div>
+          ({card.averageScore})
+          </div>
+         
         </div>
       </BackSide>
     </Flippy>

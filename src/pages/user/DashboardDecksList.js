@@ -1,7 +1,7 @@
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 import { SectionHeader } from "../../components/global/SectionHeader";
 
-export const DashboardDecks = ({userData}) => {
+export const DashboardDecksList = ({userData}) => {
   return (
     <div>
      <SectionHeader>Your decks</SectionHeader>
