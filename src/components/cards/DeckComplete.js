@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../../context/user.context";
 import { useContext, useEffect } from "react";
 import { getUser, getUserDeckData, updateAllDeckCards, updateUserDeckData } from "../../api";
+import { CardTransition } from "../global/CardTransition";
 
 export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
   const { user, setUser } = useContext(UserContext);
@@ -49,6 +50,7 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
   }, []);
 
   return (
+    <CardTransition>
     <div className="grid place-items-center">
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
@@ -73,5 +75,6 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
         </div>
       </div>
     </div>
+    </CardTransition>
   );
 };

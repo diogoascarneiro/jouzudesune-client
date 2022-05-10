@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCard } from "../../api";
+import { CardTransition } from "../global/CardTransition";
 import { Loading } from "../global/Loading";
 
 export const CardFront = ({ id, showCardBack, trackScore, cardQuestions, numOfOptions }) => {
@@ -26,6 +27,7 @@ export const CardFront = ({ id, showCardBack, trackScore, cardQuestions, numOfOp
 
   if (!card || !cardQuestions?.meanings?.length) return <Loading />;
   return (
+    <CardTransition>
     <div className="card w-96 bg-neutral shadow-xl">
       <div className="card-body items-center text-center">
         <h1 className="text-center mt-16 mb-32">{card.questionWord}</h1>
@@ -40,5 +42,6 @@ export const CardFront = ({ id, showCardBack, trackScore, cardQuestions, numOfOp
         </div>
       </div>
     </div>
+    </CardTransition>
   );
 };

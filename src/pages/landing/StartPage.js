@@ -11,28 +11,40 @@ export const StartPage = () => {
   const [seenDeckType, setSeenDeckType] = useState(null);
 
   return (
-    <DefaultTransition>
-    <div className="p-5">
-      <SectionHeader>Welcome back {user.username}! Let's get started.</SectionHeader>
-      <div className="flex w-full h-[60vh]">
-        <div className="flex-grow w-2/4">
-          <h4 className="my-3">Practice specific decks</h4>
-          <div className="grid flex-grow card h-full bg-primary rounded-box place-items-center p-5">
-            <p>Pick one of our themed decks and start learning!</p>
+    <DefaultTransition className="p-5 h-[90vh]">
+      <SectionHeader>
+        Welcome back {user.username}! Let's get started.
+      </SectionHeader>
+      <div className="flex w-full flex-wrap lg:flex-nowrap gap-x-5 h-[85%] mb-20">
+        <div className="flex flex-col w-full lg:w-2/6">
+          <h4 className="my-3 text-center ">Practice specific decks</h4>
+          <div className="card h-full bg-primary rounded-box py-5 px-10 text-center justify-between">
+          <div><h3 className="mb-5 lg:mb-3">Themed decks</h3>
+          <p>Pick one of our themed decks and start learning!</p></div>
+          <div className="stack bg-neutral mx-28 py-6 rounded-xl">
+  <div className="grid w-32 h-40 rounded text-primary-content place-content-center" style={{
+          backgroundImage: "url(../img/decks/default.jpg)"
+        }}><h3><b>勉強</b></h3></div> 
+  <div className="grid w-32 h-40 rounded bg-accent text-accent-content place-content-center">2</div> 
+  <div className="grid w-32 h-40 rounded bg-secondary text-secondary-content place-content-center">3</div>
+</div>
             <Link to="/decks">
-              <button className="btn btn-secondary">Start</button>
+              <button className="btn btn-secondary btn-wide">Start</button>
             </Link>
           </div>
         </div>
-        <div className="divider divider-horizontal mt-3 py-16">OR</div>
-        <div className="flex-grow">
-          <h4 className="my-2">Free practice</h4>
-          <div className="flex flex-row flex-grow place-items-center h-full">
-            <div className="w-2/4 p-5 card bg-primary rounded-box h-full mr-5">
-              <h3>Random cards</h3>
-              <p>Feeling adventurous? We'll fetch you a completely random deck. Let's see how you do! </p>
-              <h6>How many cards should this deck have?</h6>
+        <div className="divider divider-horizontal mt-16 hidden lg:flex">OR</div>
+        <div className="flex flex-col w-full lg:w-4/6">
+          <h4 className="my-2 text-center">Free practice</h4>
+          <div className="flex flex-wrap lg:flex-nowrap gap-x-10 gap-y-5 text-center lg:h-full">
+          <div className="w-full lg:w-2/4 py-5 px-10 card bg-primary rounded-box justify-between lg:h-full">
+              <div><h3 className="mb-5 lg:mb-3">Random cards</h3>
+              <p>
+                Feeling adventurous? Choose a number of cards and we'll fetch you a completely random deck.
+                Let's see how you do!
+              </p></div>
               <div>
+              <h6 className="text-left mt-3 lg:mt-0 mb-2">Number of cards:</h6>
                 <input
                   type="range"
                   min="5"
@@ -42,10 +54,10 @@ export const StartPage = () => {
                   step="5"
                   onChange={(e) => setRandomDeckRange(e.target.value)}
                 />
-                <div className="w-full flex justify-between text-xs px-2">
-                  <span>5</span>
-                  <span>10</span>
-                  <span>15</span>
+                <div className="w-full flex justify-between text-xs mb-5 px-2">
+                  <span><b>5</b></span>
+                  <span><b>10</b></span>
+                  <span><b>15</b></span>
                 </div>
                 <Link
                   to="/free-practice"
@@ -57,33 +69,51 @@ export const StartPage = () => {
                     },
                   }}
                 >
-                  <button className="btn btn-secondary">Start</button>
+                  <button className="btn btn-secondary btn-wide">Start</button>
                 </Link>
               </div>
             </div>
-            <div className="w-2/4 p-5 h-full card bg-primary rounded-box">
-              <h3>Practice seen cards</h3>
-              <p>
-                Need a refresher? We'll make a deck out of the cards you've already seen to help you memorize them. Make it random or focus on the ones you did worse on -
-                the choice is yours.
+            <div className="w-full lg:w-2/4 py-5 px-10 lg:h-full card bg-primary rounded-box justify-between mb-10">
+              <h3 className="mb-5 lg:m-0">Practice seen cards</h3>
+              <p className="mb-5 lg:mb-2">
+                Need a refresher? We'll make a deck out of the cards you've
+                already seen to help you memorize them. 
               </p>
-              <div className="form-control">
+              <div className="form-control bg-neutral rounded-xl mb-5 lg:m-0 p-3">
                 <label className="label cursor-pointer">
-                  <span className="label-text">Lower scored cards first</span>
-                  <input type="radio" name="radio-6" className="radio checked:bg-primary" onChange={() => setSeenDeckType("seenLowFirst")} />
+                  <span className="label-text"><b>Lower scored cards first</b></span>
+                  <input
+                    type="radio"
+                    name="radio-6"
+                    className="radio radio-primary checked:bg-primary"
+                    onChange={() => setSeenDeckType("seenLowFirst")}
+                  />
+                </label>
+                <label className="label cursor-pointer">
+                  <span className="label-text"><b>Random</b></span>
+                  <input
+                    type="radio"
+                    name="radio-6"
+                    className="radio radio-primary checked:bg-primary"
+                    onChange={() => setSeenDeckType("seenRandom")}
+                  />
                 </label>
               </div>
-              <div className="form-control">
-                <label className="label cursor-pointer">
-                  <span className="label-text">Random</span>
-                  <input type="radio" name="radio-6" className="radio checked:bg-secondary" onChange={() => setSeenDeckType("seenRandom")} />
-                </label>
-              </div>
-              <input type="range" min="5" max="15" value={seenDeckRange} className="range range-secondary" step="5" onChange={(e) => setSeenDeckRange(e.target.value)} />
-              <div className="w-full flex justify-between text-xs px-2">
-                <span>5</span>
-                <span>10</span>
-                <span>15</span>
+             <div>
+             <h6 className="text-left mb-2">Number of cards:</h6>
+              <input
+                type="range"
+                min="5"
+                max="15"
+                value={seenDeckRange}
+                className="range range-secondary"
+                step="5"
+                onChange={(e) => setSeenDeckRange(e.target.value)}
+              />
+              <div className="w-full flex justify-between text-xs px-2 mb-5">
+                <span><b>5</b></span>
+                <span><b>10</b></span>
+                <span><b>15</b></span>
               </div>
               {seenDeckType && (
                 <Link
@@ -96,19 +126,22 @@ export const StartPage = () => {
                     },
                   }}
                 >
-                  <button className="btn btn-secondary">Start</button>
+                  <button className="btn btn-secondary btn-wide">Start</button>
                 </Link>
               )}
               {!seenDeckType && (
-                <button className="btn btn-secondary btn-disabled" aria-disabled="true">
+                <button
+                  className="btn btn-secondary btn-disabled btn-wide"
+                  aria-disabled="true"
+                >
                   Start
                 </button>
               )}
+             </div> 
             </div>
           </div>
         </div>
       </div>
-    </div>
     </DefaultTransition>
   );
 };

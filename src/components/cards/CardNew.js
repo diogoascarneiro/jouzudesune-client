@@ -1,10 +1,11 @@
 import { AudioButton } from "../global/AudioButton";
 import ReactTooltip from "react-tooltip";
+import { CardTransition } from "../global/CardTransition";
 
 export const CardNew = ({ card, moveToNextCard }) => {
 
   return (
-      <>
+      <CardTransition>
       <h1>New card!</h1>
     <div className="card bg-neutral shadow-xl">
       <div className="flex justify-center flex-col lg:items-center p-10">
@@ -42,6 +43,6 @@ export const CardNew = ({ card, moveToNextCard }) => {
         </div>
       </div>
     </div>
-    </>
+    </CardTransition>
   );
 };

@@ -87,7 +87,7 @@ export const Signup = () => {
 
           <button className="btn btn-primary my-5" type="submit">Sign up</button>
         </form>
-        <div class="divider">Already have an account?</div>
+        <div className="divider">Already have an account?</div>
         <Link className="btn btn-secondary w-full mt-5" to={"/login"}>Log In</Link>
       </div>
     </div>

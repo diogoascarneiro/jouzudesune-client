@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/user.context";
 import { getUser } from "../../api";
 import { Loading } from "../../components/global/Loading";
@@ -16,9 +16,9 @@ export const Dashboard = () => {
   useEffect(() => {
     (async () => {
       if (user) {
-      const response = await getUser(user._id);
-      setUserData(response.data);
-    }
+        const response = await getUser(user._id);
+        setUserData(response.data);
+      }
     })();
   }, [user]);
 
@@ -26,11 +26,11 @@ export const Dashboard = () => {
     (async () => {
       if (userData && "cards" in userData) {
         setCardsShowing({
-        page: 1,
-        numOfCards: 10,
-        currentCards: userData.cards.slice(0, 10),
-      });
-    }  
+          page: 1,
+          numOfCards: 10,
+          currentCards: userData.cards.slice(0, 10),
+        });
+      }
     })();
   }, [userData]);
 
@@ -55,21 +55,23 @@ export const Dashboard = () => {
         nextCardsShowing.numOfCards
     );
     setCardsShowing(nextCardsShowing);
-    
   };
 
   if (!userData && !cardsShowing) return <Loading />;
 
   return (
-    <DefaultTransition> <div className="p-5">
-    {cardsShowing && <DashboardCardsList
-      cardsShowing={cardsShowing}
-      cardPaginationHandler={cardPaginationHandler}
-      showCards={showCards} setShowCards={setShowCards}
-    />}
-    {userData && <DashboardDecksList userData={userData} />}
-  </div></DefaultTransition>
-   
-   
+    <DefaultTransition>
+      <div className="p-5">
+        {cardsShowing && (
+          <DashboardCardsList
+            cardsShowing={cardsShowing}
+            cardPaginationHandler={cardPaginationHandler}
+            showCards={showCards}
+            setShowCards={setShowCards}
+          />
+        )}
+        {userData && <DashboardDecksList userData={userData} />}
+      </div>
+    </DefaultTransition>
   );
 };

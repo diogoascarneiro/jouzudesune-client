@@ -63,7 +63,7 @@ export const Login = () => {
             Login
           </button>
         </form>
-        <div class="divider">Don't have an account?</div>
+        <div className="divider">Don't have an account?</div>
         <Link className="btn btn-secondary w-full mt-5" to={"/signup"}>
           Sign up
         </Link>

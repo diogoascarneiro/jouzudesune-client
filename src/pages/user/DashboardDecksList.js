@@ -1,9 +1,10 @@
 import Flippy, { FrontSide, BackSide } from "react-flippy";
+import { DefaultTransition } from "../../components/global/DefaultTransition";
 import { SectionHeader } from "../../components/global/SectionHeader";
 
 export const DashboardDecksList = ({userData}) => {
   return (
-    <div>
+    <DefaultTransition>
      <SectionHeader>Your decks</SectionHeader>
       <div className="flex flex-row justify-center">
         {userData.decks &&
@@ -49,6 +50,6 @@ export const DashboardDecksList = ({userData}) => {
           <h4 className="text-center py-20">No decks here yet, go out and explore some!</h4>
         )}
       </div>
-      </div>
+      </DefaultTransition>
   )
 }

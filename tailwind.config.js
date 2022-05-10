@@ -18,7 +18,7 @@ module.exports = {
     })
   })],
   daisyui: {
-    themes: ["pastel", "dracula"],
-    darkTheme: "dracula"
+    themes: ["pastel", "synthwave"],
+    darkTheme: "synthwave"
   }
 }

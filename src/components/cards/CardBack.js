@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getCard } from "../../api";
 import { AudioButton } from "../global/AudioButton";
 import ReactTooltip from "react-tooltip";
+import { CardTransition } from "../global/CardTransition";
 
 export const CardBack = ({ id, moveToNextCard }) => {
   /* Not going to implement something like DOMPurifier to sanitize html for dangerouslySetInnerHtml
@@ -28,6 +29,7 @@ export const CardBack = ({ id, moveToNextCard }) => {
   };
 
   return (
+    <CardTransition>
     <div className="card lg:card-side bg-neutral shadow-xl">
       <div className="flex justify-center flex-col lg:items-center px-20">
         <h1 className="text-center">
@@ -69,5 +71,6 @@ export const CardBack = ({ id, moveToNextCard }) => {
         </div>
       </div>
     </div>
+    </CardTransition>
   );
 };
