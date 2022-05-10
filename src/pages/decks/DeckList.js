@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getAllDecks } from "../../api";
 import { Link } from "react-router-dom";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
+import { DefaultTransition } from "../../components/global/DefaultTransition";
 
 export const DeckList = () => {
   const [deckList, setDeckList] = useState([]);
@@ -14,6 +15,7 @@ export const DeckList = () => {
   }, []);
 
   return (
+    <DefaultTransition>
     <div className="p-5">
       <h3 className="border-0 rounded-xl w-full text-center px-12 py-1 bg-secondary">Decks</h3>
       <div className="flex flex-row justify-center">
@@ -61,5 +63,6 @@ export const DeckList = () => {
         })}
       </div>
     </div>
+    </DefaultTransition>
   );
 };

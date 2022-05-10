@@ -3,6 +3,7 @@ import { UserContext } from "../../context/user.context";
 import { getUser, updateUser, upload } from "../../api";
 import { Loading } from "../../components/global/Loading";
 import { toast } from "react-toastify";
+import { DefaultTransition } from "../../components/global/DefaultTransition";
 
 export const Profile = () => {
   const { user, setUser } = useContext(UserContext);
@@ -50,6 +51,7 @@ export const Profile = () => {
   if (!userData) return <Loading />;
 
   return (
+    <DefaultTransition>
     <div className="flex flex-wrap lg:flex-nowrap min-h-[90vh]">
       <div className="border rounded-xl m-5 w-full lg:w-2/4 shadow-xl flex-col">
         <div className="border-hidden rounded-t-xl py-2 px-4 h-16 w-full bg-secondary">
@@ -129,5 +131,6 @@ export const Profile = () => {
         </div>
       </div>
     </div>
+    </DefaultTransition>
   );
 };
