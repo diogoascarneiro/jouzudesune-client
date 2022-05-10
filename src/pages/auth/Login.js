@@ -34,15 +34,12 @@ export const Login = () => {
   // NOTE: NEED TO CHANGE USERNAME TO EMAIL FOR LOGIN VERIFICATION. JUST PERSONAL PREFERENCE
   return (
     <div className="flex justify-center mt-12">
-      <div className="w-1/3">
+      <div className="lg:w-1/3">
         <h1>Login</h1>
         <form className="flex flex-col" onSubmit={handleSubmitForm}>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Your user name</span>
-            </label>
+          <div className="form-control mt-2">
             <label className="input-group">
-              <span className="text-sm w-1/4">User name</span>
+              <span className="text-sm w-2/5 lg:w-1/4">User name</span>
               <input
                 type="text"
                 placeholder="User name"
@@ -51,12 +48,9 @@ export const Login = () => {
               />
             </label>
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Your password</span>
-            </label>
+          <div className="form-control mt-2">
             <label className="input-group">
-              <span className="text-sm w-1/4">Password</span>
+              <span className="text-sm w-2/5 lg:w-1/4">Password</span>
               <input
                 type="password"
                 placeholder="**********"

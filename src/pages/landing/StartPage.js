@@ -16,7 +16,7 @@ export const StartPage = () => {
           <h2>Practice specific decks</h2>
           <div className="grid flex-grow card bg-base-300 rounded-box place-items-center">
             <p>Pick one of our themed decks and start learning!</p>
-            <button className="btn">Start</button>
+            <Link to="/decks"><button className="btn">Start</button></Link>
           </div>
         </div>
         <div className="divider divider-horizontal">OR</div>
