@@ -46,7 +46,7 @@ export const Signup = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="w-1/3">
+      <div className="lg:w-1/3">
         <h1 className="text-4xl">Sign up</h1>
         <div className="avatar flex justify-center">
           <div className="w-32 mask mask-squircle">
@@ -58,30 +58,21 @@ export const Signup = () => {
           onSubmit={handleSubmitForm}
           encType="multipart/form-data"
         >
-        <div className="form-control">
-  <label className="label">
-    <span className="label-text">Your user name</span>
-  </label> 
+        <div className="form-control mt-2">
   <label className="input-group">
-    <span className="text-sm w-1/4">User name</span>
+    <span className="text-sm w-2/5 lg:w-1/4">User name</span>
     <input type="text" placeholder="User name" className="input input-bordered w-3/4" onChange={(e) => setUsername(e.target.value)}/>
   </label>
 </div> 
-<div className="form-control">
-  <label className="label">
-    <span className="label-text">Your Email</span>
-  </label>
+<div className="form-control mt-2">
   <label className="input-group">
-    <span className="text-sm w-1/4">Email</span>
+    <span className="text-sm w-2/5 lg:w-1/4">Email</span>
     <input type="email" placeholder="info@site.com" className="input input-bordered w-3/4" onChange={(e) => setEmail(e.target.value)} />
   </label>
 </div>
- <div className="form-control">
-  <label className="label">
-    <span className="label-text">Your password</span>
-  </label>
+ <div className="form-control mt-2">
   <label className="input-group">
-    <span className="text-sm w-1/4">Password</span>
+    <span className="text-sm w-2/5 lg:w-1/4">Password</span>
     <input type="password" placeholder="**********" className="input input-bordered w-3/4" onChange={(e) => setPassword(e.target.value)} />
   </label>
 </div>
@@ -96,7 +87,7 @@ export const Signup = () => {
 
           <button className="btn btn-primary my-5" type="submit">Sign up</button>
         </form>
-        <p className="text-center">Already have an account? </p>
+        <div class="divider">Already have an account?</div>
         <Link className="btn btn-secondary w-full mt-5" to={"/login"}>Log In</Link>
       </div>
     </div>
