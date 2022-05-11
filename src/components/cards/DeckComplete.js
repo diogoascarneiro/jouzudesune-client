@@ -1,12 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../../context/user.context";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getUser, getUserDeckData, updateAllDeckCards, updateUserDeckData } from "../../api";
 import { CardTransition } from "../global/CardTransition";
+import { Loading } from "../global/Loading";
 
 export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
   const { user, setUser } = useContext(UserContext);
   const { deckId } = useParams() || null;
+  const [fullyLoaded, setFullyLoaded] = useState(false);
 
   const winImage = () => {
     const winImages = ["/img/thumbs-up1.gif", "/img/thumbs-up2.gif", "/img/thumbs-up3.gif", "/img/thumbs-up4.gif", "/img/thumbs-up5.gif" ];
@@ -46,11 +48,14 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
     if (deckId) await deckUpdater();
      await cardUpdater();
      await updateUserContext();
+     setFullyLoaded(true);
     })();
   }, []);
 
+  if (!fullyLoaded) return <Loading/>
   return (
-    <CardTransition>
+  <>
+    {fullyLoaded && <CardTransition>
     <div className="grid place-items-center h-[75vh]">
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
@@ -76,5 +81,7 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
       </div>
     </div>
     </CardTransition>
+    }
+  </>
   );
 };

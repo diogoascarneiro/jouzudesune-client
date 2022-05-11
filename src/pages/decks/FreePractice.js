@@ -7,7 +7,7 @@ import { Loading } from "../../components/global/Loading";
 import { DeckComplete } from "../../components/cards/DeckComplete";
 import { SectionHeader } from "../../components/global/SectionHeader";
 import { CardNew } from "../../components/cards/CardNew";
-import { getRandomDeck } from "../../api";
+import { getRandomDeck, getUser } from "../../api";
 
 /* 
  Note to self 2: turn all these states into a reducer
@@ -15,13 +15,14 @@ import { getRandomDeck } from "../../api";
 */
 
 export const FreePractice = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const location = useLocation();
   const navigate = useNavigate();
   
   const {options} = location.state || "invalid";
 
+  const [userData, setUserData] = useState();
   const [currentCard, setCurrentCard] = useState(0);
   const [cardState, setCardState] = useState("new");
   const [cardQuestions, setCardQuestions] = useState({});
@@ -117,6 +118,13 @@ export const FreePractice = () => {
 
   useEffect(() => {
     (async () => {
+      const userResponse = await getUser(user._id);
+      setUserData(userResponse.data);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
       if (!location.state) navigate("/start");
       const response = await getRandomDeck(options);
       setBestPossibleScore(response.data.length * (numOfOptions - 1));
@@ -130,7 +138,10 @@ export const FreePractice = () => {
       }
       
     })();
-  }, []);
+  }, [userData]);
+
+  
+
 
   /*
    * JSX GOES HERE
@@ -160,6 +171,7 @@ export const FreePractice = () => {
         {cardState === "front" && (
           <CardFront
             id={shuffledDeck.cards[currentCard]._id}
+            card={shuffledDeck.cards[currentCard]}
             showCardBack={showCardBack}
             cardQuestions={cardQuestions}
             numOfOptions={numOfOptions}
@@ -168,7 +180,7 @@ export const FreePractice = () => {
         )}
         {cardState === "back" && (
           <CardBack
-            id={shuffledDeck.cards[currentCard]._id}
+            card={shuffledDeck.cards[currentCard]}
             moveToNextCard={moveToNextCard}
           />
         )}

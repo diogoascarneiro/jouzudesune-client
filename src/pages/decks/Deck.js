@@ -15,7 +15,7 @@ import { CardNew } from "../../components/cards/CardNew";
 */
 
 export const Deck = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const [userData, setUserData] = useState();
   const [currentCard, setCurrentCard] = useState(0);
@@ -121,8 +121,7 @@ export const Deck = () => {
   
   useEffect(() => {
     (async () => {
-      if (userData)
-      { 
+      if (userData) { 
       const response = await getDeck(deckId);
       setBestPossibleScore(response.data.cards.length * (numOfOptions - 1));
       shuffleDeck(response.data);
