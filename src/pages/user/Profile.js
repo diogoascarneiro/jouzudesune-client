@@ -44,7 +44,7 @@ export const Profile = () => {
   
   useEffect(() => {
     (async () => {
-     setProfilePicture(userData.profilePicture);
+     if (userData) setProfilePicture(userData.profilePicture);
     })();
   }, [userData]);
 

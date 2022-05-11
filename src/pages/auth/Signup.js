@@ -67,7 +67,7 @@ export const Signup = () => {
 <div className="form-control mt-2">
   <label className="input-group">
     <span className="text-sm w-2/5 lg:w-1/4">Email</span>
-    <input type="email" placeholder="info@site.com" className="input input-bordered w-3/4" onChange={(e) => setEmail(e.target.value)} />
+    <input type="email" placeholder="person@site.com" className="input input-bordered w-3/4" onChange={(e) => setEmail(e.target.value)} />
   </label>
 </div>
  <div className="form-control mt-2">

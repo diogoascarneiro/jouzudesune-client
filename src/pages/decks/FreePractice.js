@@ -15,7 +15,7 @@ import { getRandomDeck } from "../../api";
 */
 
 export const FreePractice = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const location = useLocation();
   const navigate = useNavigate();

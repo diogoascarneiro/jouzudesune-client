@@ -51,7 +51,7 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
 
   return (
     <CardTransition>
-    <div className="grid place-items-center">
+    <div className="grid place-items-center h-[75vh]">
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
           <img

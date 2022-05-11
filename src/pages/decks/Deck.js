@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../context/user.context";
 import { useParams } from "react-router-dom";
-import { getDeck } from "../../api";
+import { getDeck, getUser } from "../../api";
 import { CardFront } from "../../components/cards/CardFront";
 import { CardBack } from "../../components/cards/CardBack";
 import { Loading } from "../../components/global/Loading";
@@ -15,8 +15,9 @@ import { CardNew } from "../../components/cards/CardNew";
 */
 
 export const Deck = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
+  const [userData, setUserData] = useState();
   const [currentCard, setCurrentCard] = useState(0);
   const [cardState, setCardState] = useState("new");
   const [cardQuestions, setCardQuestions] = useState({});
@@ -35,7 +36,8 @@ export const Deck = () => {
 
   const buildNewCardsSequence = (deck) => {
     const userSeenCards = {};
-    user.cards.map((card) => (userSeenCards[`${card.cardId}`] = true));
+    userData.cards.map((card) => (userSeenCards[`${card.cardId._id}`] = true));
+    console.log('userData', userData);
     const newCards = [];
     deck.cards.forEach((card) => {
       if (!userSeenCards[`${card._id}`]) {
@@ -84,7 +86,7 @@ export const Deck = () => {
         setCardState("front");
       }
     } else {
-      if (!(currentCard + 1 >= shuffledDeck.length)) {
+      if (!(currentCard + 1 >= shuffledDeck.cards.length)) {
         setCurrentCard(currentCard + 1);
         setCardState("front");
         generateQuestions(currentCard + 1, shuffledDeck);
@@ -111,11 +113,22 @@ export const Deck = () => {
 
   useEffect(() => {
     (async () => {
+      const userResponse = await getUser(user._id);
+      setUserData(userResponse.data);
+    })();
+  }, []);
+
+  
+  useEffect(() => {
+    (async () => {
+      if (userData)
+      { 
       const response = await getDeck(deckId);
       setBestPossibleScore(response.data.cards.length * (numOfOptions - 1));
       shuffleDeck(response.data);
+    }
     })();
-  }, []);
+  }, [userData]);
 
   /*
    * JSX GOES HERE
@@ -123,7 +136,7 @@ export const Deck = () => {
 
   if (!shuffledDeck) return <Loading />;
 
-  if (currentCard >= shuffledDeck.length)
+  if (shuffledDeck && currentCard >= shuffledDeck.cards.length)
     return (
       <DeckComplete
         totalScore={totalScore}
