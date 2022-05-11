@@ -130,10 +130,11 @@ export const Deck = () => {
       />
     );
 
+    // NOTE: MAKE TRANSITION FROM FRONT TO BACK BE A FLIP! MAKES PERFECT SENSE
   return (
     <div className="px-5 pb-5">
       <SectionHeader className="mb-5">{shuffledDeck.name}</SectionHeader>
-      <div className="grid place-items-center">
+      <div className="grid place-items-center h-[75vh]">
         {cardState === "new" && newCardsDeck && (
           <CardNew
             card={newCardsDeck[currentCard]}

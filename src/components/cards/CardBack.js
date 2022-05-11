@@ -30,7 +30,8 @@ export const CardBack = ({ id, moveToNextCard }) => {
 
   return (
     <CardTransition>
-    <div className="card lg:card-side bg-neutral shadow-xl">
+    <h1 className="card-title text-3xl pb-5">{congratulateCard()}</h1>
+    <div className="card bg-neutral shadow-xl p-10">
       <div className="flex justify-center flex-col lg:items-center px-20">
         <h1 className="text-center">
           <ruby>
@@ -38,17 +39,16 @@ export const CardBack = ({ id, moveToNextCard }) => {
             <rt style={{ fontSize: "1rem" }}>{card.wordInKana}</rt>
           </ruby>
         </h1>
-        <p className="mb-3">{card.wordMeanings}</p>
+        <h4 className="mb-3 text-center">{card.wordMeanings}</h4>
         <AudioButton src={`/media/${card.wordAudio}`}>Listen</AudioButton>
       </div>
       <div className="card-body">
-        <h1 className="card-title text-3xl pb-5">{congratulateCard()}</h1>
         <div>
           <b>Example sentence: </b>
           <br />
           <h2
             data-tip
-            data-for="exampleSentenceFurigana" className="underline w-fit"
+            data-for="exampleSentenceFurigana" className="border-0 rounded-xl py-4 pl-5 pr-1 my-3 bg-secondary w-fit"
             dangerouslySetInnerHTML={{ __html: card.exampleSentence }}
           ></h2>
           <ReactTooltip
@@ -61,7 +61,7 @@ export const CardBack = ({ id, moveToNextCard }) => {
               dangerouslySetInnerHTML={{ __html: card.exampleWithFurigana }}
             ></span>
           </ReactTooltip>
-          <div className="mb-2">{card.exampleTranslation}</div>
+          <h5 className="mb-2">{card.exampleTranslation}</h5>
           <AudioButton src={`/media/${card.exampleAudio}`}>Listen</AudioButton>
         </div>
         <div className="card-actions justify-end">

@@ -7,7 +7,7 @@ export const CardNew = ({ card, moveToNextCard }) => {
   return (
       <CardTransition>
       <h1>New card!</h1>
-    <div className="card bg-neutral shadow-xl">
+    <div className="card bg-neutral shadow-xl px-20">
       <div className="flex justify-center flex-col lg:items-center p-10">
         <h1 className="text-center">{card.questionWord}</h1>
         <h4 className="mt-6">{card.wordInKana}</h4>

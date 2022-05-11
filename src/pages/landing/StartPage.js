@@ -17,11 +17,11 @@ export const StartPage = () => {
       </SectionHeader>
       <div className="flex w-full flex-wrap lg:flex-nowrap gap-x-5 h-[85%] mb-20">
         <div className="flex flex-col w-full lg:w-2/6">
-          <h4 className="my-3 text-center ">Practice specific decks</h4>
+          <h4 className="my-2 text-center">Practice specific decks</h4>
           <div className="card h-full bg-primary rounded-box py-5 px-10 text-center justify-between">
           <div><h3 className="mb-5 lg:mb-3">Themed decks</h3>
-          <p>Pick one of our themed decks and start learning!</p></div>
-          <div className="stack bg-neutral mx-28 py-6 rounded-xl">
+          <p className="mb-5 lg:mb-0">Pick one of our themed decks and start learning!</p></div>
+          <div className="stack bg-neutral mx-28 py-6 rounded-xl mb-5 lg:mb-3">
   <div className="grid w-32 h-40 rounded text-primary-content place-content-center" style={{
           backgroundImage: "url(../img/decks/default.jpg)"
         }}><h3><b>勉強</b></h3></div> 
@@ -35,11 +35,11 @@ export const StartPage = () => {
         </div>
         <div className="divider divider-horizontal mt-16 hidden lg:flex">OR</div>
         <div className="flex flex-col w-full lg:w-4/6">
-          <h4 className="my-2 text-center">Free practice</h4>
+          <h4 className="mt-5 mb-5 lg:mt-2 lg:mb-2 text-center">Free practice</h4>
           <div className="flex flex-wrap lg:flex-nowrap gap-x-10 gap-y-5 text-center lg:h-full">
           <div className="w-full lg:w-2/4 py-5 px-10 card bg-primary rounded-box justify-between lg:h-full">
               <div><h3 className="mb-5 lg:mb-3">Random cards</h3>
-              <p>
+              <p className="px-10">
                 Feeling adventurous? Choose a number of cards and we'll fetch you a completely random deck.
                 Let's see how you do!
               </p></div>
