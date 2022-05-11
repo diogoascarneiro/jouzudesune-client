@@ -20,7 +20,7 @@ export const StartPage = () => {
           <h4 className="my-2 text-center">Practice specific decks</h4>
           <div className="card h-full bg-primary rounded-box py-5 px-10 text-center justify-between">
           <div><h3 className="mb-5 lg:mb-3">Themed decks</h3>
-          <p className="mb-5 lg:mb-0">Pick one of our themed decks and start learning!</p></div>
+          <p className="mb-5 lg:mb-0 px-10">Pick one of our themed decks and start learning!</p></div>
           <div className="stack bg-neutral mx-28 py-6 rounded-xl mb-5 lg:mb-3">
   <div className="grid w-32 h-40 rounded text-primary-content place-content-center" style={{
           backgroundImage: "url(../img/decks/default.jpg)"

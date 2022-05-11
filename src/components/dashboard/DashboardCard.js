@@ -1,22 +1,31 @@
 import { Transition } from "@headlessui/react";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
-import { FaStar, FaStarHalf } from "react-icons/fa";
-import { useEffect } from "react";
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 export const DashboardCard = ({card, index, cardIsShowing}) => {
-const stars = [];
 
-for (let i = 0; i < card.averageScore; i++) {
-  stars.push(<FaStar/>);
+const starRating = () => {
+  let stars = [];
+  let j = 1;
+  for (let i = 0; i < card.averageScore * 2; i++) {
+    if (i === 0 && card.averageScore >= 0.5) {stars.push(<FaStarHalfAlt/>);}
+    if (i > 0) {
+      if (stars[i-j].type.name === "FaStarHalfAlt") {
+        stars.pop();
+        stars.push(<FaStar/>);
+        j++;
+      } 
+      else stars.push(<FaStarHalfAlt/>)    
+    }
+  }
+  for (let i = stars.length; i < 4; i++) {
+    stars.push(<FaRegStar/>);
+  }
+  return stars;
 }
 
-const starRatingGenerator = () => {
- 
-}
+let meaningCapitalized = card.cardId.wordMeanings.charAt(0).toUpperCase() + card.cardId.wordMeanings.slice(1);
 
-useEffect(()=>{
-  starRatingGenerator();
-}, [card])
 
   return (
     <Transition
@@ -44,7 +53,7 @@ useEffect(()=>{
         }}
       >
         <div className="card-body items-center text-center justify-center text-black">
-          <h3 className="card-title text-6xl">
+          <h3 className="card-title text-5xl lg:text-6xl">
             {card.cardId.questionWord}
           </h3>
         </div>
@@ -54,20 +63,20 @@ useEffect(()=>{
         style={{ padding: "0" }}
       >
         <div className="card-body bg-secondary items-center text-center justify-between">
-          <p className="grow-0 text-4xl">
+          <p className="grow-0 text-2xl lg:text-3xl">
             {card.cardId.wordInKana}
           </p>
-          <p className="grow-0 text-5xl">
-            {card.cardId.wordMeanings}
+          <p className="grow-0 text-3xl lg:text-4xl">
+            {meaningCapitalized}
           </p>
-          <p className="grow-0 text-xl">
+          <p className="grow-0 lg:text-xl">
             <b>Times seen: </b>
             {card.timesSeen}
           </p>
-          <div className="grow-0 text-xl">
+          <div className="grow-0 lg:text-xl">
             <b>Average score: </b>
-            <div className="flex justify-center">{stars}</div>
-          ({card.averageScore})
+            <div className="flex justify-center">{starRating()}</div>
+          ({card.averageScore.toFixed(2)})
           </div>
          
         </div>

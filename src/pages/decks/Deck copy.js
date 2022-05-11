@@ -46,12 +46,10 @@ export const Deck = () => {
     else setCardState("front");
   };
 
-  // This needs to be tidied up but I'm running out of time :P
   const shuffleDeck = (deck) => {
     const shuffledCards = deck.cards.sort(() => 0.5 - Math.random());
     const newDeck = { ...deck };
     newDeck.cards = shuffledCards;
-    newDeck.name = deck.name;
     setShuffledDeck(newDeck);
     buildNewCardsSequence(newDeck);
     generateQuestions(0, newDeck);
@@ -84,7 +82,7 @@ export const Deck = () => {
         setCardState("front");
       }
     } else {
-      if (!(currentCard + 1 >= shuffledDeck.length)) {
+      if (!(currentCard + 1 >= shuffledDeck.cards.length)) {
         setCurrentCard(currentCard + 1);
         setCardState("front");
         generateQuestions(currentCard + 1, shuffledDeck);
@@ -123,7 +121,7 @@ export const Deck = () => {
 
   if (!shuffledDeck) return <Loading />;
 
-  if (currentCard >= shuffledDeck.length)
+  if (currentCard >= shuffledDeck.cards.length)
     return (
       <DeckComplete
         totalScore={totalScore}
@@ -146,7 +144,6 @@ export const Deck = () => {
         {cardState === "front" && (
           <CardFront
             id={shuffledDeck.cards[currentCard]._id}
-            card={shuffledDeck.cards[currentCard]}
             showCardBack={showCardBack}
             cardQuestions={cardQuestions}
             numOfOptions={numOfOptions}
@@ -155,7 +152,7 @@ export const Deck = () => {
         )}
         {cardState === "back" && (
           <CardBack
-            card={shuffledDeck.cards[currentCard]}
+            id={shuffledDeck.cards[currentCard]._id}
             moveToNextCard={moveToNextCard}
           />
         )}

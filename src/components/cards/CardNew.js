@@ -4,25 +4,28 @@ import { CardTransition } from "../global/CardTransition";
 
 export const CardNew = ({ card, moveToNextCard }) => {
 
+let meaningCapitalized = card.wordMeanings.charAt(0).toUpperCase() + card.wordMeanings.slice(1);
+
   return (
       <CardTransition>
-      <h1>New card!</h1>
-    <div className="card bg-neutral shadow-xl px-20">
-      <div className="flex justify-center flex-col lg:items-center p-10">
-        <h1 className="text-center">{card.questionWord}</h1>
-        <h4 className="mt-6">{card.wordInKana}</h4>
-        <h3 className="mb-3">{card.wordMeanings}</h3>
-        <AudioButton src={`/media/${card.wordAudio}`}>Listen</AudioButton>
+<h4 className="text-center rounded-xl bg-primary mb-2">New card!</h4>
+    <div className="card bg-neutral shadow-xl p-8 mb-10">
+    <div className="flex items-center justify-around lg:flex-col px-5 lg:px-20 gap-x-10">
+          <ruby>
+            <rb><h1 className="text-center">{card.questionWord}</h1></rb>
+            <rt style={{ fontSize: "1rem" }}>{card.wordInKana}</rt>
+          </ruby>
+        <div className="flex flex-col justify-center"><h4 className="mb-3 text-center">{meaningCapitalized}</h4>
+        <AudioButton src={`/media/${card.wordAudio}`}>Listen</AudioButton></div>
       </div>
-      <div className="card-body text-center">
+      <div className="card-body py-0 pt-4 px-5">
         <div>
-          <b className="">Example sentence: </b>
-          <br />
-          <h3
+          <p className="">Example sentence: </p>
+          <h4
             data-tip
-            data-for="exampleSentenceFurigana" className="border-0 rounded-xl py-4 pl-5 pr-1 my-3 bg-secondary w-fit"
+            data-for="exampleSentenceFurigana" className="border-0 rounded-xl py-4 pl-5 pr-1 mb-2 mt-1 bg-secondary text-center w-full"
             dangerouslySetInnerHTML={{ __html: card.exampleSentence }}
-          ></h3>
+          ></h4>
           <ReactTooltip
             place="top"
             type="light"
@@ -33,8 +36,9 @@ export const CardNew = ({ card, moveToNextCard }) => {
               dangerouslySetInnerHTML={{ __html: card.exampleWithFurigana }}
             ></span>
           </ReactTooltip>
-          <div className="mb-2 text-2xl">{card.exampleTranslation}</div>
-          <AudioButton src={`/media/${card.exampleAudio}`}>Listen</AudioButton>
+          <div className="w-full flex justify-center gap-x-5 mb-2">
+          <h6 className="text-center text-lg lg:text-xl">{card.exampleTranslation}</h6>
+          <AudioButton src={`/media/${card.exampleAudio}`} className="justify-self-end mt-1">Listen</AudioButton></div>
         </div>
         <div className="card-actions justify-end">
           <button className="btn btn-primary" onClick={moveToNextCard}>

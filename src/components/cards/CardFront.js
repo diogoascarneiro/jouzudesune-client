@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { getCard } from "../../api";
+import { useState } from "react";
 import { CardTransition } from "../global/CardTransition";
 import { Loading } from "../global/Loading";
 
-export const CardFront = ({ id, showCardBack, trackScore, cardQuestions, numOfOptions }) => {
-  const [card, setCard] = useState();
+export const CardFront = ({ card, id, showCardBack, trackScore, cardQuestions, numOfOptions }) => {
   const [cardScore, setCardScore] = useState(numOfOptions - 1);
 
   const handleAnswer = (e) => {
@@ -18,12 +16,6 @@ export const CardFront = ({ id, showCardBack, trackScore, cardQuestions, numOfOp
     }
   };
 
-  useEffect(() => {
-    (async () => {
-      const response = await getCard(id);
-      setCard(response.data);
-    })();
-  }, []);
 
   if (!card || !cardQuestions?.meanings?.length) return <Loading />;
   return (
