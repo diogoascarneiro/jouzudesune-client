@@ -20,7 +20,7 @@ export const CardFront = ({ card, id, showCardBack, trackScore, cardQuestions, n
   if (!card || !cardQuestions?.meanings?.length) return <Loading />;
   return (
     <CardTransition>
-    <div className="card w-96 bg-neutral shadow-xl">
+    <div className="card lg:w-96 bg-neutral shadow-xl">
       <div className="card-body items-center text-center">
         <h1 className="text-center mt-16 mb-32">{card.questionWord}</h1>
         <div className="card-actions justify-center">

@@ -18,14 +18,14 @@ export const DeckList = () => {
     <DefaultTransition>
     <div className="p-5">
       <h3 className="border-0 rounded-xl w-full text-center px-12 py-1 bg-secondary">Decks</h3>
-      <div className="flex flex-row justify-center">
+      <div className="flex flex-row flex-wrap justify-center">
         {deckList.map((deck) => {
           return (
-            <Link to={deck._id} key={deck._id} className="my-5 mx-2">
+            <Link to={deck._id} key={deck._id} className="my-5 mx-2 grow w-[30%] h-60 lg:w-auto lg:h-auto">
               <Flippy
                 flipOnHover={true}
                 flipDirection="horizontal"
-                className="w-52 h-80 card shadow-xl"
+                className="lg:w-52 h-60 lg:h-80 card shadow-xl"
               >
                 <FrontSide
                   className="card shadow-xl opacity-90"

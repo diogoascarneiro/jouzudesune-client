@@ -37,12 +37,12 @@ let meaningCapitalized = card.cardId.wordMeanings.charAt(0).toUpperCase() + card
     leave="transition-opacity duration-1000"
     leaveFrom="opacity-100"
     leaveTo="opacity-0"
-    className="w-52 lg:w-[17.5%]"
+    className="grow lg:w-[17.5%]"
   >
     <Flippy
       flipOnHover={true}
       flipDirection="horizontal"
-      className="h-80 lg:h-96 card m-4 shadow-xl"
+      className="h-60 lg:h-96 card m-4 shadow-xl"
       key={index}
     >
       <FrontSide
@@ -62,20 +62,20 @@ let meaningCapitalized = card.cardId.wordMeanings.charAt(0).toUpperCase() + card
         className="card shadow-xl border"
         style={{ padding: "0" }}
       >
-        <div className="card-body bg-secondary items-center text-center justify-between">
-          <p className="grow-0 text-2xl lg:text-3xl">
+        <div className="card-body p-3 lg:p-8 bg-secondary items-center text-center justify-between">
+          <p className="grow-0 text-xl lg:text-2xl">
             {card.cardId.wordInKana}
           </p>
-          <p className="grow-0 text-3xl lg:text-4xl">
+          <p className="grow-0 text-2xl lg:text-3xl">
             {meaningCapitalized}
           </p>
-          <p className="grow-0 lg:text-xl">
+          <p className="grow-0 text-sm lg:text-xl">
             <b>Times seen: </b>
             {card.timesSeen}
           </p>
-          <div className="grow-0 lg:text-xl">
+          <div className="grow-0 text-sm lg:text-xl">
             <b>Average score: </b>
-            <div className="flex justify-center">{starRating()}</div>
+            <div className="flex justify-center mt-1">{starRating()}</div>
           ({card.averageScore.toFixed(2)})
           </div>
          

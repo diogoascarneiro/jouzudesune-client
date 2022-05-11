@@ -69,7 +69,7 @@ export const Profile = () => {
           <div className="w-full flex justify-center mt-4">
             <form
               onSubmit={handleUpdateDataForm}
-              encType="multipart/form-data" className="flex flex-col w-2/4"
+              encType="multipart/form-data" className="flex flex-col lg:w-2/4"
             >
               <label className="input-group mb-5">
                 <input type="file" className="" onChange={(e) => setNewProfilePicture(e.target.files[0])}/>
@@ -90,7 +90,7 @@ export const Profile = () => {
                   className="input input-bordered w-3/5" onChange={(e) => setPassword(e.target.value)}
                 />
               </label>
-              <button type="submit" className="btn btn-primary btn-block ">
+              <button type="submit" className="btn btn-primary btn-block mb-3">
                 Change
               </button>
             </form>
@@ -98,18 +98,18 @@ export const Profile = () => {
         </div>
       </div>
       <div className="border rounded-xl m-5 w-full lg:w-2/4 shadow-xl flex-col">
-        <h2 className="border rounded-t-xl px-4 h-16 w-full bg-secondary">
+        <h2 className="border rounded-t-xl px-4 h-16 max-w-full bg-secondary">
           Your stats
         </h2>
         <div className="p-5">
         <h4 className="w-fit border-0 rounded-xl py-2 px-4 bg-primary">Decks</h4>
         <div className="flex w-full justify-center">
-          <div className="stats shadow bg-secondary my-5 w-full text-center">
-            <div className="stat p-10 ">
+          <div className="stats shadow bg-secondary my-5 w-full flex flex-col text-center">
+            <div className="stat lg:p-10">
               <div className="stat-title">Total decks played</div>
               <div className="stat-value">{userData.decks.length}</div>
             </div>
-            <div className="stat p-10">
+            <div className="stat lg:p-10">
               <div className="stat-title">Average deck score</div>
               <div className="stat-value">{userData.decks.length}</div>
             </div>
@@ -117,12 +117,12 @@ export const Profile = () => {
           </div>
           <h4 className="w-fit border-0 rounded-xl py-2 px-4 bg-primary">Cards</h4>
           <div className="flex w-full justify-center">
-          <div className="stats shadow bg-secondary my-5 w-full text-center">
-            <div className="stat p-10">
+          <div className="stats shadow bg-secondary my-5 w-full flex flex-col text-center">
+            <div className="stat lg:p-10">
               <div className="stat-title">Total cards seen</div>
               <div className="stat-value">{userData.cards.length}</div>
             </div>
-            <div className="stat p-10">
+            <div className="stat lg:p-10">
               <div className="stat-title">Average card score</div>
               <div className="stat-value">{userData.cards.length}</div>
             </div>

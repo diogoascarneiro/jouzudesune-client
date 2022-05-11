@@ -53,11 +53,12 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
   }, []);
 
   if (!fullyLoaded) return <Loading/>
+
   return (
   <>
     {fullyLoaded && <CardTransition>
     <div className="grid place-items-center h-[75vh]">
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-[90%] bg-primary lg:w-96 shadow-xl">
         <figure className="px-10 pt-10">
           <img
             src={winImage()}
@@ -71,9 +72,9 @@ export const DeckComplete = ({ totalScore, cardScores, bestPossibleScore }) => {
             <b>Your score was:</b> {totalScore} / {bestPossibleScore}
           </p>
           <div className="card-actions">
-          {deckId ? <Link className="btn btn-primary" to="/decks">
+          {deckId ? <Link className="btn btn-secondary" to="/decks">
               Back to deck list
-            </Link> : <Link className="btn btn-primary" to="/start">
+            </Link> : <Link className="btn btn-secondary" to="/start">
               Back
             </Link>}
           </div>

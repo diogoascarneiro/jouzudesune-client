@@ -148,7 +148,7 @@ export const Deck = () => {
   return (
     <div className="px-5 pb-5">
       <SectionHeader className="mb-5">{shuffledDeck.name}</SectionHeader>
-      <div className="grid place-items-center h-[75vh]">
+      <div className="grid lg:place-items-center h-[75vh]">
         {cardState === "new" && newCardsDeck && (
           <CardNew
             card={newCardsDeck[currentCard]}
