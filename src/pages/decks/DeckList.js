@@ -21,7 +21,7 @@ export const DeckList = () => {
       <div className="flex flex-row flex-wrap justify-center">
         {deckList.map((deck) => {
           return (
-            <Link to={deck._id} key={deck._id} className="my-5 mx-2 grow w-[30%] h-60 lg:w-auto lg:h-auto">
+            <Link to={deck._id} key={deck._id} className="my-5 mx-2 grow lg:grow-0 w-[30%] h-60 lg:w-52 lg:h-auto">
               <Flippy
                 flipOnHover={true}
                 flipDirection="horizontal"

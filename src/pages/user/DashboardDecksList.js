@@ -10,10 +10,11 @@ export const DashboardDecksList = ({userData}) => {
         {userData.decks &&
           userData.decks.map((deck, i) => {
             return (
+              <div className="grow lg:grow-0 max-w-[50%] lg:w-[20%]">
                 <Flippy
                   flipOnHover={true}
                   flipDirection="horizontal"
-                  className="w-52 h-80 card m-4 shadow-xl" key={i}
+                  className="h-60 lg:h-96 card m-4 shadow-xl" key={i}
                 >
                   <FrontSide
                     className="card shadow-xl opacity-90"
@@ -32,18 +33,26 @@ export const DashboardDecksList = ({userData}) => {
                     className="card shadow-xl border"
                     style={{ padding: "0" }}
                   >
-                    <div className="card-body bg-secondary items-center text-center justify-between">
-                      <p className="grow-0">
+                    <div className="card-body p-3 lg:p-5 bg-secondary items-center text-center justify-between">
+                    <div className="grow-0 text-base hidden lg:flex lg:text-xl">
+                        <p><i>{deck.deckId.description}</i></p>
+                      </div>
+                      <div className="grow-0 text-base lg:text-xl">
+                        <b>Difficulty: </b>
+                        <p>{deck.deckId.difficulty}</p>
+                      </div>
+                      <div className="grow-0 text-base lg:text-xl">
                         <b>High score: </b>
-                        {deck.highScore}
-                      </p>
-                      <p className="grow-0">
+                        <p>{deck.highScore} / <b>{deck.deckId.cards.length * 4}</b></p>
+                      </div>
+                      <div className="grow-0 text-base lg:text-xl">
                         <b>Times Played: </b>
-                        {deck.timesPlayed}
-                      </p>
+                        <p>{deck.timesPlayed}</p>
+                      </div>
                     </div>
                   </BackSide>
                 </Flippy>
+                </div>
             );
           })}
         {!userData.decks[0] && (

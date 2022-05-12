@@ -12,6 +12,17 @@ export const Profile = () => {
   const [newProfilePicture, setNewProfilePicture] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
+  // Why doesn't this work but state works even without using setScores? Must find out. -> const scores = {};
+  const [scores, setScores] = useState({});
+
+  const scoreCalculator = (userData) => {
+    let scores = {};
+    let deckHiScores = userData.decks.map(deck => deck.highScore).reduce((pv, cv) => pv + cv);
+    let cardHiScores = userData.cards.map(card => card.averageScore).reduce((pv, cv) => pv + cv);
+    (deckHiScores / userData.decks.length) > 1 ? scores.deckAvg = Math.round(deckHiScores / userData.decks.length) : scores.deckAvg = (deckHiScores / userData.decks.length).toFixed(2);
+    (cardHiScores / userData.cards.length) > 1 ? scores.cardAvg = Math.round(cardHiScores / userData.cards.length) : scores.cardAvg = (cardHiScores / userData.cards.length).toFixed(2); 
+    setScores(scores);
+  }
 
   const handleUpdateDataForm = async (e) => {
     e.preventDefault();
@@ -36,6 +47,7 @@ export const Profile = () => {
   useEffect(() => {
     (async () => {
       const response = await getUser(user._id);
+      scoreCalculator(response.data);
       setUserData(response.data);
       setEmail(response.data.email);
     })();
@@ -62,7 +74,7 @@ export const Profile = () => {
                 <h4 className="">Hi {userData.username}!</h4>
                 <i>You can change your profile details here.</i>
           <div className="avatar justify-center w-full">
-            <div className="w-36 mt-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div className="w-36 mt-5 lg:mt-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src={profilePicture} alt="Your profile picture"/>
             </div>
           </div>
@@ -104,27 +116,27 @@ export const Profile = () => {
         <div className="p-5">
         <h4 className="w-fit border-0 rounded-xl py-2 px-4 bg-primary">Decks</h4>
         <div className="flex w-full justify-center">
-          <div className="stats shadow bg-secondary my-5 w-full flex flex-col text-center">
+          <div className="stats shadow bg-secondary my-5 w-full flex flex-col lg:flex-row text-center">
             <div className="stat lg:p-10">
               <div className="stat-title">Total decks played</div>
               <div className="stat-value">{userData.decks.length}</div>
             </div>
             <div className="stat lg:p-10">
               <div className="stat-title">Average deck score</div>
-              <div className="stat-value">{userData.decks.length}</div>
+              <div className="stat-value">{scores.deckAvg}</div>
             </div>
           </div>
           </div>
           <h4 className="w-fit border-0 rounded-xl py-2 px-4 bg-primary">Cards</h4>
           <div className="flex w-full justify-center">
-          <div className="stats shadow bg-secondary my-5 w-full flex flex-col text-center">
+          <div className="stats shadow bg-secondary my-5 w-full flex flex-col lg:flex-row text-center">
             <div className="stat lg:p-10">
               <div className="stat-title">Total cards seen</div>
               <div className="stat-value">{userData.cards.length}</div>
             </div>
             <div className="stat lg:p-10">
               <div className="stat-title">Average card score</div>
-              <div className="stat-value">{userData.cards.length}</div>
+              <div className="stat-value">{scores.cardAvg}</div>
             </div>
           </div>
           </div>

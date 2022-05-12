@@ -37,7 +37,7 @@ let meaningCapitalized = card.cardId.wordMeanings.charAt(0).toUpperCase() + card
     leave="transition-opacity duration-1000"
     leaveFrom="opacity-100"
     leaveTo="opacity-0"
-    className="grow lg:w-[17.5%]"
+    className="grow lg:grow-0 lg:w-[20%]"
   >
     <Flippy
       flipOnHover={true}

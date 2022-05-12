@@ -49,7 +49,7 @@ export const Signup = () => {
       <div className="lg:w-1/3">
         <h1 className="text-4xl">Sign up</h1>
         <div className="avatar flex justify-center">
-          <div className="w-32 mask mask-squircle">
+          <div className="w-32 my-5 mask mask-squircle">
             <img className="" alt={profilePicture ? "Your profile Picture" :"Profile Picture placeholder"} src={profilePicture ? URL.createObjectURL(profilePicture) : "./img/placeholderProfilePic.png"} />
           </div>
         </div>
