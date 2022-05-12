@@ -13,7 +13,7 @@ export const PracticeSeenLocked = () => {
       </div>
       <div className="w-full flex flex-col my-10 lg:-mt-3">
         <div className="flex justify-center">
-          <IconContext.Provider value={{ className: "text-6xl text-center" }}>
+          <IconContext.Provider value={{ className: "text-7xl text-center" }}>
             <AiFillLock />
           </IconContext.Provider>
         </div>

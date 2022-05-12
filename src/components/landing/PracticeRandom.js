@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { GiCardRandom } from "react-icons/gi";
+import { IconContext } from "react-icons";
 
 export const PracticeRandom = ({
   user,
@@ -14,6 +16,11 @@ export const PracticeRandom = ({
           completely random deck. Let's see how you do!
         </p>
       </div>
+     <div className="flex justify-center my-5 lg:my-0">
+          <IconContext.Provider value={{ className: "text-7xl text-center text-neutral" }}>
+            <GiCardRandom />
+          </IconContext.Provider>
+        </div>
       <div>
         <h6 className="text-left mt-3 lg:mt-0 mb-2">Number of cards:</h6>
         <input
