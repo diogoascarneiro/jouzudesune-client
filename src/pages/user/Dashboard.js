@@ -10,9 +10,10 @@ export const Dashboard = () => {
   const { user } = useContext(UserContext);
   const [userData, setUserData] = useState();
   const [cardsShowing, setCardsShowing] = useState({});
+  const [decksShowing, setDecksShowing] = useState({});
   const [showCards, setShowCards] = useState(true);
+  const [showDecks, setShowDecks] = useState(true);
 
-  // need to make a show more button here
   useEffect(() => {
     (async () => {
       if (user) {
@@ -29,6 +30,13 @@ export const Dashboard = () => {
           page: 1,
           numOfCards: 10,
           currentCards: userData.cards.slice(0, 10),
+        });
+      }
+      if (userData && "decks" in userData) {
+        setDecksShowing({
+          page: 1,
+          numOfDecks: 10,
+          currentDecks: userData.decks.slice(0, 10),
         });
       }
     })();
@@ -57,7 +65,30 @@ export const Dashboard = () => {
     setCardsShowing(nextCardsShowing);
   };
 
-  if (!userData && !cardsShowing) return <Loading />;
+  const deckPaginationHandler = (option) => {
+    const nextDecksShowing = { ...decksShowing };
+    const numOfPages = Math.ceil(
+      userData.decks.length / nextDecksShowing.numOfDecks
+    );
+    if (option === "showPage")
+      return `Page ${nextDecksShowing.page} / ${numOfPages}`;
+    if (option === "prev" && nextDecksShowing.page - 1 >= 1) {
+      setShowDecks(false);
+      nextDecksShowing.page -= 1;
+    }
+    if (option === "next" && nextDecksShowing.page + 1 <= numOfPages) {
+      setShowDecks(false);
+      nextDecksShowing.page += 1;
+    }
+    nextDecksShowing.currentDecks = userData.decks.slice(
+      (nextDecksShowing.page - 1) * nextDecksShowing.numOfDecks,
+      (nextDecksShowing.page - 1) * nextDecksShowing.numOfDecks +
+      nextDecksShowing.numOfDecks
+    );
+    setDecksShowing(nextDecksShowing);
+  };
+
+  if (!userData && !cardsShowing && !decksShowing) return <Loading />;
 
   return (
     <DefaultTransition>
@@ -70,7 +101,8 @@ export const Dashboard = () => {
             setShowCards={setShowCards}
           />
         )}
-        {userData && <DashboardDecksList userData={userData} />}
+        {decksShowing && <DashboardDecksList deckPaginationHandler={deckPaginationHandler} decksShowing={decksShowing} showDecks={showDecks}
+            setShowDecks={setShowDecks} />}
       </div>
     </DefaultTransition>
   );

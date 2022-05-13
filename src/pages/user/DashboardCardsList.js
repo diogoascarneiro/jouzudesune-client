@@ -22,7 +22,7 @@ export const DashboardCardsList = ({ cardsShowing, cardPaginationHandler, showCa
         {cardsShowing.currentCards && showCards &&
           cardsShowing.currentCards.map((card, i) => {
             return (
-              <DashboardCard card={card} index={i} cardIsShowing={showCards} />
+              <DashboardCard card={card} index={`${i}-${card.cardId.wordMeanings}`} cardIsShowing={showCards} />
             );
           })}
       </div>

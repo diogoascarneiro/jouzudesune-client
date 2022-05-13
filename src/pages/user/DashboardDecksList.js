@@ -1,20 +1,34 @@
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 import { DefaultTransition } from "../../components/global/DefaultTransition";
 import { SectionHeader } from "../../components/global/SectionHeader";
+import { DashboardDeckPagination } from "./DashboardDeckPagination";
+import { useEffect } from "react";
 
-export const DashboardDecksList = ({userData}) => {
+export const DashboardDecksList = ({deckPaginationHandler, decksShowing, showDecks, setShowDecks}) => {
+ 
+  useEffect(()=>{
+    setShowDecks(true);
+  }, [showDecks])
+
+  console.log('decksShowing', decksShowing)
   return (
     <DefaultTransition>
      <SectionHeader>Your decks</SectionHeader>
-      <div className="flex flex-row justify-center">
-        {userData.decks &&
-          userData.decks.map((deck, i) => {
+     {"currentDecks" in decksShowing &&
+        decksShowing.currentDecks.length > 0 && (
+          <DashboardDeckPagination
+            deckPaginationHandler={deckPaginationHandler} 
+          />
+        )}
+      <div className="flex flex-row flex-wrap justify-center">
+        {"currentDecks" in decksShowing &&
+          decksShowing.currentDecks.map((deck, i) => {
             return (
               <div className="grow lg:grow-0 max-w-[50%] lg:w-[20%]">
                 <Flippy
                   flipOnHover={true}
                   flipDirection="horizontal"
-                  className="h-60 lg:h-96 card m-4 shadow-xl" key={i}
+                  className="h-60 lg:h-96 card m-4 shadow-xl" key={`${i}-${deck.deckId.name}`}
                 >
                   <FrontSide
                     className="card shadow-xl opacity-90"
@@ -55,7 +69,14 @@ export const DashboardDecksList = ({userData}) => {
                 </div>
             );
           })}
-        {!userData.decks[0] && (
+         {"currentDecks" in decksShowing &&
+        decksShowing.currentDecks.length > 0 && (
+          <DashboardDeckPagination
+            deckPaginationHandler={deckPaginationHandler} 
+          />
+        )}
+        {"currentDecks" in decksShowing &&
+        decksShowing.currentDecks.length === 0 && (
           <h4 className="text-center py-20">No decks here yet, go out and explore some!</h4>
         )}
       </div>
