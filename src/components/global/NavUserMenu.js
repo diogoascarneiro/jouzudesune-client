@@ -11,11 +11,11 @@ export const NavUserMenu = () => {
   }
 
   return (
-    <><p className="">{greetUser(user.username)}</p>
+    <><p className="hidden lg:flex lg:text-base">{greetUser(user.username)}</p>
     <div className="flex-none">
       <div className="dropdown dropdown-end">
         <label tabIndex="0" className="btn btn-ghost btn-circle avatar ml-4">
-          <div className="w-10 rounded-full">
+          <div className="rounded-full">
             <img src={user.profilePicture} alt="your profile picture" />
           </div>
         </label>

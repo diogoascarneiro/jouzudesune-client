@@ -10,12 +10,12 @@ let meaningCapitalized = card.wordMeanings.charAt(0).toUpperCase() + card.wordMe
       <CardTransition>
 <h4 className="text-center rounded-xl bg-primary mb-2">New card!</h4>
     <div className="card bg-neutral shadow-xl p-8 mb-10">
-    <div className="flex items-center justify-around lg:flex-col px-5 lg:px-20 gap-x-10">
-          <ruby>
+    <div className="flex items-center justify-evenly lg:flex-col lg:px-20 gap-x-5">
+          <ruby className="">
             <rb><h1 className="text-center">{card.questionWord}</h1></rb>
             <rt style={{ fontSize: "1rem" }}>{card.wordInKana}</rt>
           </ruby>
-        <div className="flex flex-col justify-center"><h4 className="mb-3 text-center">{meaningCapitalized}</h4>
+        <div className="flex flex-col justify-center w-2/4 lg:w-fit"><h4 className="mb-3 text-center">{meaningCapitalized}</h4>
         <AudioButton src={`/media/${card.wordAudio}`}>Listen</AudioButton></div>
       </div>
       <div className="card-body py-0 pt-4 px-5">

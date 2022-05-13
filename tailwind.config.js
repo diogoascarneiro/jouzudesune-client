@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'varela': ['"Varela Round"', 'ui-sans-serif', 'system-ui']
+    },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui"), plugin(function({ addBase, theme }) {
     addBase({

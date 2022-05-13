@@ -37,7 +37,6 @@ export const Deck = () => {
   const buildNewCardsSequence = (deck) => {
     const userSeenCards = {};
     userData.cards.map((card) => (userSeenCards[`${card.cardId._id}`] = true));
-    console.log('userData', userData);
     const newCards = [];
     deck.cards.forEach((card) => {
       if (!userSeenCards[`${card._id}`]) {
@@ -147,7 +146,7 @@ export const Deck = () => {
     // NOTE: MAKE TRANSITION FROM FRONT TO BACK BE A FLIP! MAKES PERFECT SENSE
   return (
     <div className="px-5 pb-5">
-      <SectionHeader className="mb-5">{shuffledDeck.name}</SectionHeader>
+      <SectionHeader className="mb-5">{shuffledDeck.name} ({shuffledDeck.cards.length} cards)</SectionHeader>
       <div className="grid lg:place-items-center h-[75vh]">
         {cardState === "new" && newCardsDeck && (
           <CardNew
