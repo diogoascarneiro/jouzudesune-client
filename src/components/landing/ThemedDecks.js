@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const ThemedDecks = ({}) => {
+export const ThemedDecks = () => {
   return <div className="flex flex-col w-full lg:w-2/6">
           <h4 className="my-2 text-center">Practice specific decks</h4>
           <div className="card h-full bg-primary rounded-box py-5 px-10 text-center justify-between">

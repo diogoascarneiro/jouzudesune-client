@@ -37,7 +37,7 @@ export const DeckList = () => {
                 >
                   <div className="card bg-primary opacity-40 h-full w-full absolute top-0 left-0"></div>
                   <div className="card-body items-center text-center justify-center text-black z-10">
-                    <h3 className="card-title text-2xl">{deck.name}</h3>
+                    <h3 className="card-title text-xl lg:text-2xl">{deck.name}</h3>
                   </div>
                 </FrontSide>
                 <BackSide className="" style={{ padding: "0" }}>
