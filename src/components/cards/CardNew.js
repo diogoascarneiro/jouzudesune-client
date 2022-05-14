@@ -8,7 +8,7 @@ let meaningCapitalized = card.wordMeanings.charAt(0).toUpperCase() + card.wordMe
 
   return (
       <CardTransition>
-<h4 className="text-center rounded-xl bg-primary mb-2">New card!</h4>
+<h4 className="text-center rounded-xl bg-primary py-2 lg:py-4 mb-2">New card!</h4>
     <div className="card bg-neutral shadow-xl p-8 mb-10">
     <div className="flex items-center justify-evenly lg:flex-col lg:px-20 gap-x-5">
           <ruby className="">

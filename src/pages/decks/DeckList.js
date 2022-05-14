@@ -17,11 +17,12 @@ export const DeckList = () => {
   return (
     <DefaultTransition>
     <div className="p-5">
-      <h3 className="border-0 rounded-xl w-full text-center px-12 py-1 bg-secondary">Decks</h3>
-      <div className="flex flex-row flex-wrap justify-center">
+      <h3 className="border-0 rounded-xl w-full text-center px-12 py-3 bg-secondary">Decks</h3>
+      <div className="flex flex-row flex-wrap justify-between">
         {deckList.map((deck) => {
           return (
-            <Link to={deck._id} key={deck._id} className="my-5 mx-2 grow lg:grow-0 w-[30%] h-60 lg:w-52 lg:h-auto">
+            
+              <div className="my-5 mx-2 grow lg:grow-0 w-[30%] h-60 lg:w-52 lg:h-auto">
               <Flippy
                 flipOnHover={true}
                 flipDirection="horizontal"
@@ -41,24 +42,33 @@ export const DeckList = () => {
                   </div>
                 </FrontSide>
                 <BackSide className="" style={{ padding: "0" }}>
-                  <div className="flex flex-col h-full bg-secondary opacity-80 p-5">
-                    <p className="h-3/6 flex w-full justify-self-center rounded-lg bg-primary px-2 py-2">
-                      <i className="text-center self-center">
+                  <div className="flex flex-col h-full bg-secondary opacity-80 p-5 justify-between">
+                    <div className="flex w-full justify-self-center rounded-lg bg-primary px-2 py-2">
+                      <i className="text-center self-center text-sm lg:text-base">
                         {deck.description}
                       </i>
-                    </p>
-                    <div className="grow flex flex-col justify-end">
-                      <div className="w-full text-center">
-                        <p><b>Difficulty:</b></p> <p>{deck.difficulty}</p>
+                    </div>
+                    <div className="flex flex-col">
+                      <div className="w-full text-center text-sm lg:text-base">
+                      <p><b>Difficulty: </b>{deck.difficulty}</p>
+                       
                       </div>
-                      <div className="w-full text-center">
-                        <p><b>Number of cards:</b></p><p> {deck.cards.length}</p>
+                      <div className="w-full lg:text-center text-sm lg:text-base flex lg:flex-col">
+                        <p><b>Num. of cards: </b>{deck.cards.length}</p>
                       </div>
                     </div>
+                    <Link to={deck._id} key={deck._id} className="">
+                    <button
+            className="btn btn-primary w-full"
+            aria-disabled="true"
+          >
+            Start
+          </button>
+          </Link>
                   </div>
                 </BackSide>
               </Flippy>
-            </Link>
+              </div>
           );
         })}
       </div>
