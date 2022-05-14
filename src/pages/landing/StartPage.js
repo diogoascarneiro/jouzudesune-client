@@ -15,7 +15,7 @@ export const StartPage = () => {
 
   return (
     <DefaultTransition className="p-5 h-[90vh]">
-      <SectionHeader>Welcome back {user.username}! Let's get started.</SectionHeader>
+      <SectionHeader><span className="text-xl lg:text-3xl">Welcome back {user.username}! Let's get started.</span></SectionHeader>
       <div className="flex w-full flex-wrap lg:flex-nowrap gap-x-5 h-[85%] mb-20">
         <ThemedDecks     />
         <div className="divider divider-horizontal mt-16 hidden lg:flex">OR</div>
