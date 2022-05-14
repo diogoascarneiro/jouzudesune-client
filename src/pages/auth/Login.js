@@ -14,13 +14,13 @@ export const Login = () => {
     navigate("/user/profile");
   }
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const response = await login({ username, password });
+      const response = await login({ email, password });
       storeToken(response.data.authToken);
       authenticateUser();
       toast.success("Logged in successfully!");
@@ -31,7 +31,6 @@ export const Login = () => {
     }
   };
 
-  // NOTE: NEED TO CHANGE USERNAME TO EMAIL FOR LOGIN VERIFICATION. JUST PERSONAL PREFERENCE
   return (
     <div className="flex justify-center mt-12">
       <div className="lg:w-1/3">
@@ -39,12 +38,12 @@ export const Login = () => {
         <form className="flex flex-col" onSubmit={handleSubmitForm}>
           <div className="form-control mt-2">
             <label className="input-group">
-              <span className="text-sm w-2/5 lg:w-1/4">User name</span>
+              <span className="text-sm w-2/5 lg:w-1/4">Email</span>
               <input
                 type="text"
-                placeholder="User name"
+                placeholder="spike@cowboybebop.jazz"
                 className="input input-bordered w-3/4"
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </label>
           </div>

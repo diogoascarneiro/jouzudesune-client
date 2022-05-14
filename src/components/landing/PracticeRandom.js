@@ -11,13 +11,13 @@ export const PracticeRandom = ({
     <div className="w-full lg:w-2/4 py-5 px-10 card bg-primary rounded-box justify-between lg:h-full">
       <div>
         <h3 className="mb-5 lg:mb-3">Random cards</h3>
-        <p className="lg:px-10">
+        <p className="lg:px-10 lg:text-lg">
           Feeling adventurous? Choose a number of cards and we'll fetch you a
           completely random deck. Let's see how you do!
         </p>
       </div>
      <div className="flex justify-center my-5 lg:my-0">
-          <IconContext.Provider value={{ className: "text-7xl text-center text-neutral" }}>
+          <IconContext.Provider value={{ className: "text-[6rem] lg:text-[7rem] text-center text-neutral" }}>
             <GiCardRandom />
           </IconContext.Provider>
         </div>

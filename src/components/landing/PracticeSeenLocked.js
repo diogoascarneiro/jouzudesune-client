@@ -6,7 +6,7 @@ export const PracticeSeenLocked = () => {
     <div className="w-full lg:w-2/4 py-5 px-10 lg:h-full card bg-gray-500 rounded-box justify-between mb-10">
       <div>
         <h3 className="mb-5 lg:m-0">Practice seen cards</h3>
-        <p className="mt-3 lg:mb-2 line-through">
+        <p className="mt-3 lg:mb-2 lg:text-lg line-through">
           Need a refresher? We'll make a deck out of the cards you've already
           seen to help you memorize them.
         </p>

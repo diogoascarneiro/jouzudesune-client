@@ -9,15 +9,17 @@ export const PracticeSeen = ({
 }) => {
   return (
     <div className="w-full lg:w-2/4 py-5 px-10 lg:h-full card bg-primary rounded-box justify-between mb-10">
-      <h3 className="mb-5 lg:m-0">Practice seen cards</h3>
-      <p className="mb-5 lg:mb-2">
-        Need a refresher? We'll make a deck out of the cards you've already seen
-        to help you memorize them.
-      </p>
+      <div className="">
+        <h3 className="mb-5 lg:mb-0">Practice seen cards</h3>
+        <p className="mb-5 lg:mb-2 lg:mt-3 lg:text-lg">
+          Need a refresher? We'll make a deck out of the cards you've already
+          seen to help you memorize them.
+        </p>
+      </div>
       <div className="form-control bg-neutral rounded-xl mb-5 lg:m-0 p-3">
         <label className="label cursor-pointer">
-          <span className="label-text">
-            <b>Lower scored cards first</b>
+          <span className="label-text text-base lg:text-lg font-varela">
+            Lower scored cards first
           </span>
           <input
             type="radio"
@@ -27,8 +29,8 @@ export const PracticeSeen = ({
           />
         </label>
         <label className="label cursor-pointer">
-          <span className="label-text">
-            <b>Random</b>
+          <span className="label-text text-base lg:text-lg font-varela">
+            Random
           </span>
           <input
             type="radio"

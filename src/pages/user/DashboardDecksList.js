@@ -28,7 +28,7 @@ export const DashboardDecksList = ({deckPaginationHandler, decksShowing, showDec
                 <Flippy
                   flipOnHover={true}
                   flipDirection="horizontal"
-                  className="h-60 lg:h-96 card m-4 shadow-xl" key={`${i}-${deck.deckId.name}`}
+                  className="h-60 lg:h-96 xl:h-[28rem] card m-2 lg:m-4 shadow-xl" key={`${i}-${deck.deckId.name}`}
                 >
                   <FrontSide
                     className="card shadow-xl opacity-90"
