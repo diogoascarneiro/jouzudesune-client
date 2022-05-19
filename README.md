@@ -1,5 +1,5 @@
-# Intro
-**"Jouzu desu ne!" is what everyone wants to hear back from a native speaker when talking to them in Japanese. Let's make it happen!** :izakaya_lantern:
+# Intro :izakaya_lantern:
+**"Jouzu desu ne!" is what everyone wants to hear back from a native speaker when talking to them in Japanese. Let's make it happen!** 
 
 "Jouzu desu ne!” (上手ですね!, which translates to something like "You're really good \[at Japanese\]!") was created to help you (and me. Mostly me) improve your knowledge of Japanese, especially Kanji. It’s modelled after flashcard systems used to learn all sorts of things (nor just languages), specifically the Anki Core 2k deck (which lists two thousand of the most common Japanese words in daily use) where the app’s card database was originally extracted from.  Ideally, you should be able to read Hiragana and Katakana (two of the four Japanese alphabets) in order to use “Jouzu desu ne!” to the fullest, although it's not absolutely essential. 
 
