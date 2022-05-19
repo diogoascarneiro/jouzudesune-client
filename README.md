@@ -3,9 +3,7 @@
 
 "Jouzu desu ne!” (上手ですね!, which translates to something like "You're really good \[at Japanese\]!") was created to help you (and me. Mostly me) improve your knowledge of Japanese, especially Kanji. It’s modelled after flashcard systems used to learn all sorts of things (nor just languages), specifically the Anki Core 2k deck (which lists two thousand of the most common Japanese words in daily use) where the app’s card database was originally extracted from.  Ideally, you should be able to read Hiragana and Katakana (two of the four Japanese alphabets) in order to use “Jouzu desu ne!” to the fullest, although it's not absolutely essential. 
 
-![JDN Screenshot1](https://github.com/diogoascarneiro/jouzudesune-client/blob/master/public/img/howto/howto0.png?raw=true)
-![JDN Screenshot2](https://github.com/diogoascarneiro/jouzudesune-client/blob/master/public/img/howto/howto1.png?raw=true)
-![JDN Screenshot3](https://github.com/diogoascarneiro/jouzudesune-client/blob/master/public/img/howto/howto2.png?raw=true)
+![JDN examples](https://github.com/diogoascarneiro/jouzudesune-client/blob/master/public/img/howto/howto.png?raw=true)
 
 # Try it out here! :kimono:
 
